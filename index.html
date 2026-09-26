@@ -198,6 +198,12 @@ body.modal-open{overflow:hidden}
 .l-sec p{margin:0;max-width:68ch}
 .motto{font-family:var(--display);font-size:clamp(18px,2.6vw,22px);font-weight:700;line-height:1.3;color:var(--ink)}
 .l-motto{background:var(--accent-soft);margin:0 -24px;padding:18px 24px;border-bottom:0}
+.l-note{background:#FBEEE6;margin:0 -24px;padding:12px 24px;border-bottom:0}
+.l-note h3{color:#B24316}.l-note p{color:#7A3312;font-weight:500}
+:root:not([data-theme="light"]) .l-note,:root[data-theme="dark"] .l-note{background:#2A1B12}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .l-note{background:#2A1B12}}
+:root:not([data-theme="light"]) .l-note h3,:root[data-theme="dark"] .l-note h3{color:#F0A472}
+:root:not([data-theme="light"]) .l-note p,:root[data-theme="dark"] .l-note p{color:#E8C4AC}
 .l-list{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
 .l-list.warn li::marker{color:#C2410C}
 .l-steps{margin:0;padding-left:0;list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:8px}
@@ -217,7 +223,7 @@ body.modal-open{overflow:hidden}
 .l-foot{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;padding:14px 24px 18px;border-top:1px solid var(--line);background:var(--surface-2);position:sticky;bottom:0}
 .l-foot .btn:first-child{justify-self:start}.l-foot .btn:last-child{justify-self:end}
 .l-foot .btn[disabled]{opacity:.4;cursor:default}
-@media (max-width:640px){.l-head,.l-body,.l-foot{padding-left:16px;padding-right:16px}.l-motto{margin:0 -16px;padding:16px}.l-foot{grid-template-columns:1fr 1fr;padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}.l-foot #l-done{grid-column:1/-1;grid-row:1}}
+@media (max-width:640px){.l-head,.l-body,.l-foot{padding-left:16px;padding-right:16px}.l-motto,.l-note{margin:0 -16px;padding:12px 16px}.l-foot{grid-template-columns:1fr 1fr;padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}.l-foot #l-done{grid-column:1/-1;grid-row:1}}
 
 /* interview bank */
 .bank-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
@@ -343,6 +349,7 @@ body.modal-open{overflow:hidden}
 <script src="lessons/p8.js"></script>
 <script src="lessons/p9.js"></script>
 <script src="lessons/p10.js"></script>
+<script src="lessons/p11.js"></script>
 <script>
 const PHASES=[
  {n:1,name:"Python Foundations",c:"#D4760A",w:[1,5],goal:"Write clean, working Python scripts and small apps without looking up every line."},
@@ -354,7 +361,8 @@ const PHASES=[
  {n:7,name:"Generative AI & LLMs",c:"#7648E0",w:[33,38],goal:"Build real LLM apps: prompting, RAG, evaluation, fine-tuning and multimodal."},
  {n:8,name:"Agentic AI",c:"#B23CC9",w:[39,42],goal:"Build agents that use tools, keep memory, and complete multi-step tasks reliably."},
  {n:9,name:"Classical AI & Cognitive Computing",c:"#D03A7E",w:[43,45],goal:"Cover the rest of AI: search, logic, knowledge graphs, reasoning and reinforcement learning."},
- {n:10,name:"MLOps, Deployment & Career",c:"#D1453B",w:[46,48],goal:"Ship models to production, build a portfolio, and land an AI role."}
+ {n:10,name:"MLOps, Deployment & Career",c:"#D1453B",w:[46,48],goal:"Ship models to production, build a portfolio, and land an AI role."},
+ {n:11,name:"AI & Application Security",c:"#4B5563",w:[49,54],goal:"Secure AI apps and learn ethical hacking the legal way: only ever test systems you own or are given written permission to test."}
 ];
 
 const R={
@@ -454,7 +462,34 @@ const R={
  fsdl:["Full Stack Deep Learning","https://fullstackdeeplearning.com/"],
  hfpapers:["Hugging Face daily papers","https://huggingface.co/papers"],
  krish:["Krish Naik (YouTube)","https://www.youtube.com/@krishnaik06"],
- campusx:["CampusX (YouTube, Hindi)","https://www.youtube.com/@campusx-official"]
+ campusx:["CampusX (YouTube, Hindi)","https://www.youtube.com/@campusx-official"],
+ owasp10:["OWASP Top 10 (web risks)","https://owasp.org/www-project-top-ten/"],
+ portswigger:["PortSwigger Web Security Academy (free labs)","https://portswigger.net/web-security"],
+ tryhackme:["TryHackMe (guided legal labs)","https://tryhackme.com/"],
+ htb:["Hack The Box Academy","https://academy.hackthebox.com/"],
+ owaspwstg:["OWASP Web Security Testing Guide","https://owasp.org/www-project-web-security-testing-guide/"],
+ owaspmastg:["OWASP Mobile Testing Guide (MASTG)","https://mas.owasp.org/MASTG/"],
+ owaspllm:["OWASP Top 10 for LLM Applications","https://genai.owasp.org/llm-top-10/"],
+ owaspasvs:["OWASP ASVS (verification standard)","https://owasp.org/www-project-application-security-verification-standard/"],
+ owaspcheat:["OWASP Cheat Sheet Series","https://cheatsheetseries.owasp.org/"],
+ juiceshop:["OWASP Juice Shop (deliberately vulnerable app)","https://owasp.org/www-project-juice-shop/"],
+ garak:["garak (LLM vulnerability scanner)","https://github.com/NVIDIA/garak"],
+ promptfoo:["promptfoo (LLM red-team & evals)","https://www.promptfoo.dev/docs/red-team/"],
+ atlas:["MITRE ATLAS (AI threat matrix)","https://atlas.mitre.org/"],
+ attack:["MITRE ATT&CK","https://attack.mitre.org/"],
+ nistairmf:["NIST AI Risk Management Framework","https://www.nist.gov/itl/ai-risk-management-framework"],
+ pyrit:["PyRIT (AI red-team toolkit)","https://github.com/Azure/PyRIT"],
+ artlib:["Adversarial Robustness Toolbox (ART)","https://github.com/Trusted-AI/adversarial-robustness-toolbox"],
+ modelscan:["ModelScan (scan model files)","https://github.com/protectai/modelscan"],
+ hydra:["OWASP Threat Dragon (threat modelling)","https://owasp.org/www-project-threat-dragon/"],
+ tryhackmesoc:["TryHackMe SOC / Blue Team paths","https://tryhackme.com/hacktivities"],
+ hackerone:["HackerOne (bug bounty platform)","https://www.hackerone.com/"],
+ bugcrowd:["Bugcrowd (bug bounty platform)","https://www.bugcrowd.com/"],
+ ceh:["CEH / CompTIA Security+ (certifications)","https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/"],
+ kali:["Kali Linux (pentest distro, your own lab only)","https://www.kali.org/docs/"],
+ itact:["India IT Act, 2000 (know the law)","https://www.meity.gov.in/content/information-technology-act-2000"],
+ liv01:["LiveOverflow (YouTube)","https://www.youtube.com/@LiveOverflow"],
+ johnhammond:["John Hammond (YouTube)","https://www.youtube.com/@_JohnHammond"]
 };
 
 const WEEKS=[
@@ -611,7 +646,29 @@ const WEEKS=[
  proj:"Add drift monitoring and an eval-in-CI step to one earlier project",res:["mwml","mlopszc","aie","fsdl"],skills:["monitoring","LLMOps","cloud AI"]},
 {t:"Portfolio and job hunt",h:10,goal:"Turn a year of work into an AI role.",
  tasks:["Pin your 4–6 best projects on GitHub with clear READMEs and demos","Write a LinkedIn post or blog post for each capstone","Rewrite your resume around AI projects and measurable impact","Interview prep: ML theory, ML and LLM system design, Python coding","Apply for AI Engineer, ML Engineer and Gen AI Developer roles"],
- proj:"Personal portfolio site linking every capstone",res:["aie","hfpapers","krish"],skills:["portfolio","interviews","system design"]}
+ proj:"Personal portfolio site linking every capstone",res:["aie","hfpapers","krish"],skills:["portfolio","interviews","system design"]},
+/* Phase 11: AI & Application Security */
+{t:"The rules, and the lab",h:8,goal:"Set up a legal practice lab and understand the one rule that keeps ethical hacking legal.",
+ tasks:["Learn the golden rule: only test systems you own or have written permission to test (bug bounty scope counts)","Read the basics of India's IT Act, 2000 (sections 43 and 66): unauthorised access is a crime","Set up a safe lab: a VM (VirtualBox) with OWASP Juice Shop running locally","Make accounts on PortSwigger Web Security Academy and TryHackMe (built-in legal targets)","Learn responsible disclosure: how to report a bug without breaking the law","Bookmark bug bounty platforms (HackerOne, Bugcrowd) and read one program's scope page"],
+ proj:"Written lab setup and a one-page 'rules of engagement' you'll follow for every exercise in this phase",res:["itact","portswigger","tryhackme","juiceshop","hackerone"],skills:["ethics","legal scope","lab setup","responsible disclosure"]},
+{t:"Security foundations",h:9,goal:"Learn how systems talk and where they break, so attacks and defences make sense.",
+ tasks:["How the web works: HTTP requests/responses, headers, cookies, sessions","TCP/IP, DNS and ports in plain terms","Authentication vs authorisation; hashing vs encryption vs encoding","The CIA triad and threat modelling basics with OWASP Threat Dragon","Read the OWASP Top 10 and understand each risk in one line","Use browser dev tools and an intercepting proxy (Burp Suite Community) on your own lab app"],
+ proj:"A threat model of one of your own earlier projects (the RAG app or model API): assets, entry points, risks",res:["owasp10","owaspcheat","hydra","portswigger"],skills:["HTTP","auth","crypto basics","threat modelling","OWASP Top 10"],
+ note:"Run the intercepting proxy only against your own lab apps and the official practice targets, never anyone else's site."},
+{t:"Web application security",h:10,goal:"Understand and fix the most common web vulnerabilities, using legal labs only.",
+ tasks:["Work through PortSwigger Academy: SQL injection, XSS and CSRF modules (their labs are legal to attack)","Broken access control and insecure direct object references","Authentication and session flaws","Server-side request forgery and injection, at a concept level","For each: learn the fix, not just the flaw (parameterised queries, output encoding, access checks)","Practise on OWASP Juice Shop running on your own machine"],
+ proj:"Find 5 flaws in your local Juice Shop, then write the secure-code fix for each in a short report",res:["portswigger","owaspwstg","juiceshop","owaspcheat"],skills:["SQL injection","XSS","CSRF","access control","secure fixes"],
+ note:"All targets here are deliberately vulnerable practice apps or PortSwigger's own labs. Never point these techniques at a real site you don't own."},
+{t:"Mobile and API security",h:9,goal:"Learn how mobile apps and APIs are tested and hardened, on apps you build or own.",
+ tasks:["How mobile apps store data, talk to APIs, and where they leak (OWASP Mobile Top 10)","Follow the OWASP MASTG on a test app you build, in an emulator you control","Inspect API traffic from your own app; check auth, rate limits and object-level access","API security: the OWASP API Top 10 (BOLA, broken auth, excessive data exposure)","Static vs dynamic analysis of your own app","Secure storage, certificate pinning and secrets handling"],
+ proj:"Build a small deliberately-flawed Android or API app, test it with MASTG, then fix every issue you find",res:["owaspmastg","owaspwstg","owaspasvs","tryhackme"],skills:["mobile security","API security","OWASP MASTG","secure storage"],
+ note:"Test only apps you build or own, in an emulator or your own device."},
+{t:"Securing LLM apps and agents",h:10,goal:"Harden the AI systems you built earlier against the attacks unique to them.",
+ tasks:["The OWASP Top 10 for LLM apps: prompt injection, insecure output handling, data leakage","Direct and indirect prompt injection: plant one in a document your own RAG app reads","Insecure tool use and excessive agency in agents; add human approval and allow-lists","Sensitive data disclosure and PII masking","Guardrails: input/output filters, and treating retrieved text as data not instructions","Supply-chain risk: scan model files with ModelScan before loading"],
+ proj:"Red-team your own RAG app or agent, list every issue against the OWASP LLM Top 10, then ship the fixes",res:["owaspllm","atlas","modelscan","nistairmf"],skills:["prompt injection","LLM guardrails","agent safety","PII masking"]},
+{t:"Red-teaming, defence and capstone",h:10,goal:"Automate AI red-teaming, use ML to defend, and finish with a full security write-up.",
+ tasks:["Automated LLM red-teaming with garak and promptfoo against your own app","Adversarial ML: adversarial examples and data poisoning (concept + ART toolkit demo)","Use ML for defence: detect anomalies or phishing in a public log/email dataset","Learn the blue-team side: SOC basics, MITRE ATT&CK, reading logs (TryHackMe paths)","Optional next step: a certification path (Security+, CEH) or bug bounty on a real in-scope program","Write everything up like a professional security report"],
+ proj:"Phase 11 capstone: pick one of your own projects, red-team it (manual + garak), fix the findings, and publish a report with before/after",res:["garak","promptfoo","artlib","pyrit","tryhackmesoc","attack"],skills:["AI red-teaming","adversarial ML","detection","security reporting"]}
 ];
 
 const LIB=[
@@ -756,6 +813,7 @@ function lessonHTML(id){
   </header>
   <div class="l-body">
     ${sec("Motto: why learn this",`<p class="motto">${esc(les.m)}</p>`,"l-motto")}
+    ${les.note?`<section class="l-sec l-note"><h3>⚠ Stay legal</h3><p>${esc(les.note)}</p></section>`:""}
     ${sec("In simple words",`<p>${esc(les.e)}</p>`)}
     ${les.k&&les.k.length?sec("Key concepts",`<ul class="l-list">${les.k.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`):""}
     ${sec(isProj?"Build it: step by step":"Hands-on task",`<ol class="l-steps">${les.t.map(x=>`<li>${esc(x)}</li>`).join("")}</ol>`,"l-task")}

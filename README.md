@@ -1,6 +1,8 @@
 # Zero to AI Engineer
 
-A 48-week roadmap from your first line of Python to shipping AI agents, broken into **296 daily lessons**. Each day tells you why the topic matters, explains it simply, and gives you something to build. Your progress is saved in your browser.
+A 48-week roadmap from your first line of Python to shipping AI agents, broken into **338 daily lessons**. Each day tells you why the topic matters, explains it simply, and gives you something to build. Your progress is saved in your browser.
+
+> **Phase 11 (AI & Application Security) is ethical hacking, taught the legal way.** Every exercise uses deliberately vulnerable practice apps, official training labs (PortSwigger, TryHackMe, OWASP Juice Shop), or systems you own. The rule throughout: only ever test systems you own or have written permission to test. Unauthorised access to any other system is a crime (in India, under the IT Act, 2000).
 
 ## Every day's lesson includes
 
@@ -9,7 +11,7 @@ A 48-week roadmap from your first line of Python to shipping AI agents, broken i
 - **Key concepts:** the handful of ideas to remember
 - **Hands-on task:** step-by-step things to build or try
 - **Starter code:** copy-ready code for most topics
-- **Interview questions:** 2–3 likely questions with model answers (500 in total)
+- **Interview questions:** 2–3 likely questions with model answers (578 in total)
 - **Common mistakes:** what trips people up
 - **You're done when:** a clear finish line
 - **Learn from:** the best free resources for that week
@@ -28,6 +30,7 @@ A 48-week roadmap from your first line of Python to shipping AI agents, broken i
 | 8 | Agentic AI (tool calling, MCP, memory, LangGraph, multi-agent systems, agent evals) | 39–42 |
 | 9 | Classical AI & Cognitive Computing (search, logic, knowledge graphs, Bayesian networks, reinforcement learning) | 43–45 |
 | 10 | MLOps, Deployment & Career (Docker, MLflow, CI/CD, monitoring, portfolio, interviews) | 46–48 |
+| 11 | AI & Application Security — ethical, legal-labs-only (OWASP web/API/mobile/LLM Top 10, red-teaming, defensive ML) | 49–54 |
 
 Each week includes:
 
@@ -50,7 +53,7 @@ The whole path takes about 9 hours a week.
 - A diagram showing how AI, ML, deep learning, Gen AI and agents fit together
 - A library of the best free channels, courses and books
 - Light and dark mode, and a mobile-friendly layout
-- No build step and no dependencies: `index.html` plus lesson data in `lessons/p1.js` … `lessons/p10.js`
+- No build step and no dependencies: `index.html` plus lesson data in `lessons/p1.js` … `lessons/p11.js`
 
 ## Editing lessons
 
