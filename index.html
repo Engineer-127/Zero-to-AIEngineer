@@ -166,15 +166,78 @@ h1 .arrow{color:var(--accent)}
 
 .confirm{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
 footer{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:16px;color:var(--faint);font-size:12px}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* day tags + lesson button */
+.task{display:grid;grid-template-columns:1fr auto;align-items:start;gap:6px}
+.task .daytag{display:block;font-style:normal;font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:2px;text-decoration:none}
+.task input:checked + span .daytag{text-decoration:none}
+.lesson-btn{margin-top:4px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 10px;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;color:var(--accent)}
+.lesson-btn::after{content:" →"}
+.lesson-btn:hover{border-color:var(--accent)}
+.task.proj{background:var(--accent-soft);border-radius:6px;margin-top:6px}
+.task.proj label{background:transparent;margin-top:0}
+.next-actions{display:flex;gap:8px;flex-wrap:wrap}
+body.modal-open{overflow:hidden}
+
+/* lesson overlay */
+.lesson-overlay{position:fixed;inset:0;z-index:50;background:rgba(8,12,18,.55);overflow-y:auto;padding:32px 16px;overscroll-behavior:contain}
+.lesson-panel{max-width:780px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.25);overflow:hidden}
+@media (max-width:640px){.lesson-overlay{padding:0}.lesson-panel{border-radius:0;min-height:100%;border:0}}
+.l-head{padding:20px 24px 16px;border-bottom:1px solid var(--line);border-top:5px solid var(--pc)}
+.l-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.l-eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.l-close{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:13px}
+.l-head h2{font-size:clamp(22px,3.6vw,30px);font-weight:800;line-height:1.15;margin:10px 0 10px}
+.l-head h2 .tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border-radius:5px;padding:2px 7px;margin-right:8px;vertical-align:middle;font-weight:500}
+.l-meta{display:flex;gap:6px;flex-wrap:wrap}
+.chip.done{background:var(--accent-soft);color:var(--accent)}
+.l-body{padding:0 24px 8px}
+.l-sec{padding:16px 0;border-bottom:1px solid var(--line)}
+.l-sec:last-child{border-bottom:0}
+.l-sec h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500;margin:0 0 10px}
+.l-sec h3 small{text-transform:none;letter-spacing:0;color:var(--faint);margin-left:6px}
+.l-sec p{margin:0;max-width:68ch}
+.motto{font-family:var(--display);font-size:clamp(18px,2.6vw,22px);font-weight:700;line-height:1.3;color:var(--ink)}
+.l-motto{background:var(--accent-soft);margin:0 -24px;padding:18px 24px;border-bottom:0}
+.l-list{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.l-list.warn li::marker{color:#C2410C}
+.l-steps{margin:0;padding-left:0;list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:8px}
+.l-steps li{display:grid;grid-template-columns:28px 1fr;gap:8px}
+.l-steps li::before{counter-increment:s;content:counter(s);width:22px;height:22px;border-radius:50%;background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:11px;display:grid;place-items:center;margin-top:1px}
+.code-wrap{position:relative;background:var(--surface-2);border:1px solid var(--line);border-radius:10px}
+.code-wrap pre{margin:0;padding:14px 16px;overflow-x:auto;font-family:var(--mono);font-size:12.5px;line-height:1.55;tab-size:4}
+.code-wrap .copy{position:absolute;top:8px;right:8px;padding:4px 10px;font-size:12px}
+.qa{border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:var(--surface)}
+.qa summary{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:10px 12px;cursor:pointer;list-style:none;font-weight:500}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"Show answer";grid-column:2;font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:400}
+.qa[open] summary::after{content:"Hide answer"}
+.qa .qn{font-family:var(--mono);font-size:11px;color:var(--bg);background:var(--pc,var(--ink));border-radius:5px;padding:2px 6px;height:fit-content;margin-top:2px}
+.qa p{padding:0 12px 12px 12px;margin:0;color:var(--ink);border-top:1px dashed var(--line);padding-top:10px}
+.done-when{font-weight:600}
+.l-foot{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;padding:14px 24px 18px;border-top:1px solid var(--line);background:var(--surface-2);position:sticky;bottom:0}
+.l-foot .btn:first-child{justify-self:start}.l-foot .btn:last-child{justify-self:end}
+.l-foot .btn[disabled]{opacity:.4;cursor:default}
+@media (max-width:640px){.l-head,.l-body,.l-foot{padding-left:16px;padding-right:16px}.l-motto{margin:0 -16px;padding:16px}.l-foot{grid-template-columns:1fr 1fr;padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}.l-foot #l-done{grid-column:1/-1;grid-row:1}}
+
+/* interview bank */
+.bank-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.bank-controls select,.bank-controls input{font:inherit;font-size:13px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.bank-controls input{flex:1;min-width:180px}
+#bank-count{font-family:var(--mono);font-size:12px;color:var(--muted)}
+#bank-list{max-height:640px;overflow-y:auto;padding-right:4px}
+.linkish{background:none;border:0;padding:0 12px 12px;color:var(--accent);cursor:pointer;font-size:12.5px;text-align:left}
+.linkish:hover{text-decoration:underline}
+.empty{color:var(--muted)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="eyebrow">48 weeks · ~9 hrs/week · 10 phases</div>
+    <div class="eyebrow">296 daily lessons · 500 interview questions · 48 weeks · 10 phases</div>
     <h1>Zero to AI Engineer <span class="arrow">→</span></h1>
-    <p class="lede">One ordered path from your first line of Python to shipping agents: data and math, machine learning, deep learning, computer vision and perception, NLP, Gen AI, agentic AI, classical AI and cognitive computing, then deployment. Tick things off as you go. Progress is saved in your browser.</p>
+    <p class="lede">One ordered path from your first line of Python to shipping agents: data and math, machine learning, deep learning, computer vision and perception, NLP, Gen AI, agentic AI, classical AI and cognitive computing, then deployment. Every day has a lesson: the motto, a simple explanation, a hands-on task, starter code, interview questions and a clear finish line. Learn by building, one day at a time.</p>
   </header>
 
   <section class="summary" aria-label="Progress">
@@ -229,6 +292,20 @@ footer{display:flex;justify-content:space-between;align-items:center;gap:12px;fl
     <div id="phases"></div>
   </section>
 
+  <section aria-labelledby="bank-h" style="display:flex;flex-direction:column;gap:12px">
+    <div class="section-head">
+      <h2 id="bank-h">Interview question bank</h2>
+      <p>Every interview question from every lesson, with model answers. Filter by phase or search a topic like "RAG" or "overfitting".</p>
+    </div>
+    <div class="bank-controls">
+      <select id="bank-phase" aria-label="Filter by phase"></select>
+      <input id="bank-search" type="search" placeholder="Search questions" aria-label="Search questions">
+      <button class="btn" type="button" id="bank-expand">Show all answers</button>
+      <span id="bank-count"></span>
+    </div>
+    <div id="bank-list"></div>
+  </section>
+
   <section aria-labelledby="rules-h" class="panel" style="display:flex;flex-direction:column;gap:14px">
     <h2 id="rules-h" style="font-size:22px">Rules that matter more than any course</h2>
     <ol class="rules">
@@ -255,6 +332,17 @@ footer{display:flex;justify-content:space-between;align-items:center;gap:12px;fl
   </footer>
 </div>
 
+<div class="lesson-overlay" id="lesson" hidden><div class="lesson-panel" id="lesson-panel" role="dialog" aria-modal="true" aria-labelledby="l-title"></div></div>
+<script src="lessons/p1.js"></script>
+<script src="lessons/p2.js"></script>
+<script src="lessons/p3.js"></script>
+<script src="lessons/p4.js"></script>
+<script src="lessons/p5.js"></script>
+<script src="lessons/p6.js"></script>
+<script src="lessons/p7.js"></script>
+<script src="lessons/p8.js"></script>
+<script src="lessons/p9.js"></script>
+<script src="lessons/p10.js"></script>
 <script>
 const PHASES=[
  {n:1,name:"Python Foundations",c:"#D4760A",w:[1,5],goal:"Write clean, working Python scripts and small apps without looking up every line."},
@@ -545,27 +633,20 @@ function lsGet(){try{const v=JSON.parse(localStorage.getItem(LS_KEY)||"null");re
 function lsSet(){try{localStorage.setItem(LS_KEY,JSON.stringify(state))}catch(e){}}
 const cached=lsGet(); if(cached) state={done:{...cached.done}};
 
-let ref=null, mode="local", saveTimer=null, writing=false, ver=0, savedVer=0;
 function setStatus(){
-  const el=document.getElementById("status"), foot=document.getElementById("foot-status");
-  const pending=ver!==savedVer&&ref;
-  if(pending){el.dataset.s="saving";el.textContent="Saving…";}
-  else if(mode==="cloud"){el.dataset.s="cloud";el.textContent="Saved to your account";}
-  else {el.dataset.s="local";el.textContent="Saved in this browser";}
-  foot.textContent=mode==="cloud"?"Progress syncs across your devices and is private to you.":"Progress is saved in this browser only.";
+  document.getElementById("status").textContent="Saved in this browser";
+  document.getElementById("foot-status").textContent="Progress is saved in this browser only.";
 }
-function queueSave(){ver++;lsSet();setStatus();clearTimeout(saveTimer);saveTimer=setTimeout(flush,700);}
-async function flush(){
-  if(!ref){savedVer=ver;setStatus();return;}
-  if(writing){clearTimeout(saveTimer);saveTimer=setTimeout(flush,400);return;}
-  writing=true;const v=ver;
-  try{await ref.set({done:{...state.done},updated:new Date().toISOString()});savedVer=v;}
-  catch(e){
-    if(e&&(e.code==="unavailable")){writing=false;saveTimer=setTimeout(flush,1500+Math.random()*1000);return;}
-    ref=null;mode="local";savedVer=ver;
-  }
-  writing=false;setStatus();
-}
+function queueSave(){lsSet();setStatus();}
+
+/* ---------- lessons ---------- */
+const L=window.LESSONS||{};
+const DAY={};ALL_IDS.forEach((id,i)=>DAY[id]=i+1);
+const TOTAL_DAYS=ALL_IDS.length;
+function weekOf(id){return WEEKS[+id.slice(1).split("-")[0]-1]}
+function titleOf(id){const w=weekOf(id);return id.endsWith("-p")?w.proj:w.tasks[+id.split("-")[1]-1];}
+function nextDayId(){return ALL_IDS.find(id=>!isDone(id))||null}
+let lessonId=null,lastFocus=null;
 
 /* ---------- UI state ---------- */
 const open=new Set();
@@ -581,23 +662,26 @@ function ring(done,total,color){
   const r=13,c=2*Math.PI*r,f=total?done/total:0;
   return `<svg class="ring" viewBox="0 0 34 34" aria-hidden="true"><circle class="bgc" cx="17" cy="17" r="${r}"/><circle class="fg" cx="17" cy="17" r="${r}" stroke-dasharray="${(c*f).toFixed(2)} ${c.toFixed(2)}" transform="rotate(-90 17 17)" style="stroke:${color}"/><text x="17" y="20.5" text-anchor="middle">${done}</text></svg>`;
 }
+function badgeHTML(w,d,t,isCur){return d===t?`<span class="badge done">Done</span>`:(isCur?`<span class="badge" style="background:${w.p.c}">Up next</span>`:"");}
+function taskRow(id,text,isProj){
+  const lesson=L[id];
+  return `<li class="task${isProj?" proj":""}" data-row="${id}"><label><input type="checkbox" id="t-${id}" data-id="${id}" ${isDone(id)?"checked":""}><span>${isProj?`<span class="tag">Build</span>`:""}${esc(text)}<em class="daytag">Day ${DAY[id]}${lesson&&lesson.min?` · ~${lesson.min} min`:""}</em></span></label>${lesson?`<button class="lesson-btn" type="button" data-lesson="${id}" aria-label="Open lesson for day ${DAY[id]}">Lesson</button>`:""}</li>`;
+}
 function weekHTML(w,cur){
   const d=weekCount(w),t=w.ids.length,isOpen=open.has(w.n);
-  const badge=d===t?`<span class="badge done">Done</span>`:(cur?`<span class="badge" style="background:${w.p.c}">Up next</span>`:"");
-  const tasks=w.tasks.map((txt,j)=>{const id=w.ids[j];return `<li class="task"><label><input type="checkbox" id="t-${id}" data-id="${id}" ${isDone(id)?"checked":""}><span>${esc(txt)}</span></label></li>`}).join("");
+  const tasks=w.tasks.map((txt,j)=>taskRow(w.ids[j],txt,false)).join("");
   const pid=w.ids[w.ids.length-1];
-  const proj=`<li class="task proj"><label><input type="checkbox" id="t-${pid}" data-id="${pid}" ${isDone(pid)?"checked":""}><span><span class="tag">Build</span>${esc(w.proj)}</span></label></li>`;
   const res=w.res.map(k=>{const r=R[k];return r?`<li><a href="${r[1]}" target="_blank" rel="noopener"><span>${esc(r[0])}</span></a></li>`:""}).join("");
   const skills=w.skills.map(s=>`<span class="chip">${esc(s)}</span>`).join("");
   return `<article class="week${cur?" current":""}" data-w="${w.n}" style="--pc:${w.p.c}">
     <button class="wk-head" type="button" aria-expanded="${isOpen}" aria-controls="wb-${w.n}" id="wh-${w.n}">
       <span class="wk-code">W${pad(w.n)}</span>
-      <span class="wk-title"><b>${esc(w.t)}</b><span>${w.tasks.length} topics + project · ~${w.h} hrs</span></span>
-      <span class="wk-meta">${badge}${ring(d,t,w.p.c)}</span>
+      <span class="wk-title"><b>${esc(w.t)}</b><span>Days ${DAY[w.ids[0]]}–${DAY[pid]} · ${w.tasks.length} topics + project · ~${w.h} hrs</span></span>
+      <span class="wk-meta">${badgeHTML(w,d,t,cur)}${ring(d,t,w.p.c)}</span>
     </button>
     <div class="wk-body" id="wb-${w.n}" ${isOpen?"":"hidden"}>
       <p class="goal">${esc(w.goal)}</p>
-      <ul class="tasks">${tasks}${proj}</ul>
+      <ul class="tasks">${tasks}${taskRow(pid,w.proj,true)}</ul>
       <div class="aside">
         <div><h4>Learn from</h4><ul class="res">${res}</ul></div>
         <div><h4>Skills</h4><div class="chips">${skills}</div></div>
@@ -632,46 +716,146 @@ function renderSummary(){
   const weeksDone=WEEKS.filter(weekDone).length;
   const projDone=WEEKS.filter(w=>isDone(w.ids[w.ids.length-1])).length;
   const phasesDone=PHASES.filter(p=>{const [d,t]=phaseCount(p);return d===t}).length;
-  document.getElementById("stats").innerHTML=`<span><b>${done}</b> / ${total} tasks</span><span><b>${weeksDone}</b> / ${WEEKS.length} weeks</span><span><b>${projDone}</b> / ${WEEKS.length} projects</span><span><b>${phasesDone}</b> / ${PHASES.length} phases</span>`;
+  document.getElementById("stats").innerHTML=`<span><b>${done}</b> / ${total} days</span><span><b>${weeksDone}</b> / ${WEEKS.length} weeks</span><span><b>${projDone}</b> / ${WEEKS.length} projects</span><span><b>${phasesDone}</b> / ${PHASES.length} phases</span>`;
   document.getElementById("phasebar").innerHTML=PHASES.map(p=>{const [d,t]=phaseCount(p);return `<span title="P${p.n} ${esc(p.name)}: ${d}/${t}" style="--pc:${p.c}"><i style="width:${(d/t*100).toFixed(1)}%"></i></span>`}).join("");
   document.getElementById("phasebar-labels").innerHTML=PHASES.map(p=>`<span>P${p.n}</span>`).join("");
-  const cur=currentWeek(),nx=document.getElementById("next");
-  if(!cur){nx.innerHTML=`<div class="label">All done</div><h3>You finished the roadmap.</h3><p>Keep building, and read new papers each week on Hugging Face.</p>`;return;}
-  const d=weekCount(cur),t=cur.ids.length;
-  nx.style.setProperty("--pc",cur.p.c);
-  nx.innerHTML=`<div class="label" style="color:${cur.p.c}">Up next · W${pad(cur.n)} · Phase ${cur.p.n}</div><h3>${esc(cur.t)}</h3><p>${d} of ${t} done this week. ${esc(cur.goal)}</p><div><button class="btn primary" type="button" id="goto-cur">Open week ${cur.n}</button></div>`;
+  const nid=nextDayId(),nx=document.getElementById("next");
+  if(!nid){nx.innerHTML=`<div class="label">All done</div><h3>You finished all ${TOTAL_DAYS} days.</h3><p>Keep building, and read new papers each week on Hugging Face.</p>`;return;}
+  const w=weekOf(nid),les=L[nid];
+  nx.innerHTML=`<div class="label" style="color:${w.p.c}">Today · Day ${DAY[nid]} of ${TOTAL_DAYS} · W${pad(w.n)}</div><h3>${esc(titleOf(nid))}</h3>${les?`<p>${esc(les.m)}</p>`:""}<div class="next-actions"><button class="btn primary" type="button" data-lesson="${nid}">Start today's lesson</button><button class="btn" type="button" id="goto-cur">Open week ${w.n}</button></div>`;
 }
 function renderAll(){renderSummary();renderTabs();renderPhases();}
-function refreshWeek(n){
-  const w=WEEKS[n-1],el=document.querySelector(`.week[data-w="${n}"]`);
+function refreshWeeks(){
   const cur=currentWeek();
-  if(el){
-    const d=weekCount(w),t=w.ids.length;
-    el.querySelector(".wk-meta").innerHTML=(d===t?`<span class="badge done">Done</span>`:(cur&&cur.n===n?`<span class="badge" style="background:${w.p.c}">Up next</span>`:""))+ring(d,t,w.p.c);
-    const b=el.querySelector("[data-markweek]"); if(b) b.textContent=d===t?"Clear week":"Mark week done";
-  }
-  document.querySelectorAll(".week").forEach(x=>{const k=+x.dataset.w;const isC=cur&&cur.n===k;x.classList.toggle("current",!!isC);if(k!==n){const ww=WEEKS[k-1],dd=weekCount(ww),tt=ww.ids.length;x.querySelector(".wk-meta").innerHTML=(dd===tt?`<span class="badge done">Done</span>`:(isC?`<span class="badge" style="background:${ww.p.c}">Up next</span>`:""))+ring(dd,tt,ww.p.c);}});
+  document.querySelectorAll(".week").forEach(x=>{
+    const k=+x.dataset.w,w=WEEKS[k-1],d=weekCount(w),t=w.ids.length,isC=!!(cur&&cur.n===k);
+    x.classList.toggle("current",isC);
+    x.querySelector(".wk-meta").innerHTML=badgeHTML(w,d,t,isC)+ring(d,t,w.p.c);
+    const b=x.querySelector("[data-markweek]"); if(b) b.textContent=d===t?"Clear week":"Mark week done";
+  });
+  ALL_IDS.forEach(id=>{const cb=document.getElementById("t-"+id);if(cb)cb.checked=isDone(id);});
   renderSummary();renderTabs();
+}
+function setDone(id,val){if(val)state.done[id]=1;else delete state.done[id];queueSave();refreshWeeks();}
+
+/* ---------- lesson view ---------- */
+function lessonHTML(id){
+  const les=L[id],w=weekOf(id),n=DAY[id],isProj=id.endsWith("-p"),done=isDone(id);
+  const prev=ALL_IDS[n-2],next=ALL_IDS[n];
+  const res=w.res.map(k=>{const r=R[k];return r?`<li><a href="${r[1]}" target="_blank" rel="noopener"><span>${esc(r[0])}</span></a></li>`:""}).join("");
+  const sec=(label,body,cls="")=>`<section class="l-sec ${cls}"><h3>${label}</h3>${body}</section>`;
+  const qa=les.q.map((q,i)=>`<details class="qa"><summary><span class="qn">Q${i+1}</span><span>${esc(q[0])}</span></summary><p>${esc(q[1])}</p></details>`).join("");
+  return `
+  <header class="l-head" style="--pc:${w.p.c}">
+    <div class="l-top">
+      <span class="l-eyebrow">Day ${n} of ${TOTAL_DAYS} · Week ${w.n} · Phase ${w.p.n}: ${esc(w.p.name)}</span>
+      <button class="l-close" type="button" id="l-close" aria-label="Close lesson">Close</button>
+    </div>
+    <h2 id="l-title">${isProj?`<span class="tag">Build day</span>`:""}${esc(titleOf(id))}</h2>
+    <div class="l-meta">${les.min?`<span class="chip">~${les.min} min</span>`:""}<span class="chip">${esc(w.t)}</span>${done?`<span class="chip done">Completed</span>`:""}</div>
+  </header>
+  <div class="l-body">
+    ${sec("Motto: why learn this",`<p class="motto">${esc(les.m)}</p>`,"l-motto")}
+    ${sec("In simple words",`<p>${esc(les.e)}</p>`)}
+    ${les.k&&les.k.length?sec("Key concepts",`<ul class="l-list">${les.k.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`):""}
+    ${sec(isProj?"Build it: step by step":"Hands-on task",`<ol class="l-steps">${les.t.map(x=>`<li>${esc(x)}</li>`).join("")}</ol>`,"l-task")}
+    ${les.c?sec("Starter code",`<div class="code-wrap"><button class="btn copy" type="button" data-copy>Copy</button><pre><code>${esc(les.c)}</code></pre></div>`):""}
+    ${sec(`Interview questions <small>tap to see a model answer</small>`,qa,"l-qa")}
+    ${les.x&&les.x.length?sec("Common mistakes",`<ul class="l-list warn">${les.x.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`):""}
+    ${sec("You're done when",`<p class="done-when">${esc(les.d)}</p>`)}
+    ${sec("Learn from",`<ul class="res">${res}</ul>`)}
+  </div>
+  <footer class="l-foot">
+    <button class="btn" type="button" ${prev?`data-lesson="${prev}"`:"disabled"}>← Day ${n-1||""}</button>
+    <button class="btn ${done?"":"primary"}" type="button" id="l-done" data-toggle="${id}">${done?"Mark as not done":`Mark day ${n} complete`}</button>
+    <button class="btn" type="button" ${next?`data-lesson="${next}"`:"disabled"}>Day ${next?n+1:""} →</button>
+  </footer>`;
+}
+function openLesson(id){
+  if(!L[id]) return;
+  if(!lessonId) lastFocus=document.activeElement;
+  lessonId=id;
+  const ov=document.getElementById("lesson"),panel=document.getElementById("lesson-panel");
+  panel.innerHTML=lessonHTML(id);
+  ov.hidden=false;document.body.classList.add("modal-open");
+  panel.scrollTop=0;ov.scrollTop=0;
+  try{history.replaceState(null,"","#day-"+DAY[id]);}catch(e){}
+  document.getElementById("l-close").focus({preventScroll:true});
+}
+function closeLesson(){
+  lessonId=null;
+  document.getElementById("lesson").hidden=true;document.body.classList.remove("modal-open");
+  try{history.replaceState(null,"",location.pathname+location.search);}catch(e){}
+  if(lastFocus&&document.contains(lastFocus)) lastFocus.focus({preventScroll:true});
+}
+
+/* ---------- interview bank ---------- */
+let bankPhase="all",bankQuery="";
+function renderBank(){
+  const q=bankQuery.trim().toLowerCase(),rows=[];
+  ALL_IDS.forEach(id=>{
+    const les=L[id];if(!les)return;const w=weekOf(id);
+    if(bankPhase!=="all"&&w.p.n!==bankPhase)return;
+    les.q.forEach(pair=>{
+      if(q&&!(pair[0]+" "+pair[1]+" "+titleOf(id)).toLowerCase().includes(q))return;
+      rows.push(`<details class="qa bank-item" style="--pc:${w.p.c}"><summary><span class="qn">P${w.p.n}</span><span>${esc(pair[0])}</span></summary><p>${esc(pair[1])}</p><button class="linkish" type="button" data-lesson="${id}">From Day ${DAY[id]}: ${esc(titleOf(id))} →</button></details>`);
+    });
+  });
+  document.getElementById("bank-count").textContent=`${rows.length} question${rows.length===1?"":"s"}`;
+  document.getElementById("bank-list").innerHTML=rows.join("")||`<p class="empty">No questions match. Try a different word.</p>`;
+}
+function initBank(){
+  const sel=document.getElementById("bank-phase");
+  sel.innerHTML=`<option value="all">All phases</option>`+PHASES.map(p=>`<option value="${p.n}">Phase ${p.n}: ${esc(p.name)}</option>`).join("");
+  sel.addEventListener("change",()=>{bankPhase=sel.value==="all"?"all":+sel.value;renderBank();});
+  let t;document.getElementById("bank-search").addEventListener("input",e=>{clearTimeout(t);t=setTimeout(()=>{bankQuery=e.target.value;renderBank();},150);});
+  document.getElementById("bank-expand").addEventListener("click",e=>{
+    const items=document.querySelectorAll("#bank-list details");const openAll=[...items].some(d=>!d.open);
+    items.forEach(d=>d.open=openAll);e.target.textContent=openAll?"Hide all answers":"Show all answers";
+  });
+  renderBank();
 }
 
 /* ---------- events ---------- */
 document.addEventListener("change",e=>{
   const id=e.target.dataset&&e.target.dataset.id; if(!id) return;
-  if(e.target.checked) state.done[id]=1; else delete state.done[id];
-  queueSave(); refreshWeek(+id.slice(1).split("-")[0]);
+  setDone(id,e.target.checked);
 });
 document.addEventListener("click",e=>{
+  const lb=e.target.closest("[data-lesson]");
+  if(lb){openLesson(lb.dataset.lesson);return;}
+  if(e.target.id==="l-close"||e.target.id==="lesson"){closeLesson();return;}
+  const tg=e.target.closest("[data-toggle]");
+  if(tg){const id=tg.dataset.toggle,val=!isDone(id);setDone(id,val);
+    if(val&&ALL_IDS[DAY[id]]&&L[ALL_IDS[DAY[id]]]){document.getElementById("lesson-panel").innerHTML=lessonHTML(id);const nb=document.querySelector('.l-foot [data-lesson="'+ALL_IDS[DAY[id]]+'"]');if(nb){nb.classList.add("primary");nb.focus();}}
+    else document.getElementById("lesson-panel").innerHTML=lessonHTML(id);
+    return;}
+  const cp=e.target.closest("[data-copy]");
+  if(cp){const code=cp.parentElement.querySelector("code").textContent;
+    const ok=()=>{cp.textContent="Copied";setTimeout(()=>cp.textContent="Copy",1500);};
+    (navigator.clipboard?navigator.clipboard.writeText(code):Promise.reject()).then(ok).catch(()=>{const r=document.createRange();r.selectNodeContents(cp.parentElement.querySelector("code"));const s=getSelection();s.removeAllRanges();s.addRange(r);cp.textContent="Press Ctrl/Cmd+C";});
+    return;}
   const head=e.target.closest(".wk-head");
   if(head){const n=+head.closest(".week").dataset.w,body=document.getElementById("wb-"+n);const o=body.hidden;body.hidden=!o;head.setAttribute("aria-expanded",String(o));o?open.add(n):open.delete(n);return;}
   const tab=e.target.closest(".tab");
   if(tab){const v=tab.dataset.view;view=v==="all"?"all":+v;renderTabs();renderPhases();return;}
   const mw=e.target.closest("[data-markweek]");
-  if(mw){const w=WEEKS[+mw.dataset.markweek-1];const all=weekDone(w);w.ids.forEach(id=>{if(all)delete state.done[id];else state.done[id]=1;});
-    w.ids.forEach(id=>{const cb=document.getElementById("t-"+id);if(cb)cb.checked=!all;});queueSave();refreshWeek(w.n);return;}
+  if(mw){const w=WEEKS[+mw.dataset.markweek-1];const all=weekDone(w);w.ids.forEach(id=>{if(all)delete state.done[id];else state.done[id]=1;});queueSave();refreshWeeks();return;}
   if(e.target.id==="goto-cur"){const cur=currentWeek();if(!cur)return;view=cur.p.n;open.add(cur.n);renderTabs();renderPhases();const el=document.querySelector(`.week[data-w="${cur.n}"]`);if(el){el.scrollIntoView({behavior:"smooth",block:"start"});document.getElementById("wh-"+cur.n).focus({preventScroll:true});}return;}
   if(e.target.id==="reset-btn"){document.getElementById("reset-area").innerHTML=`<span class="confirm">Clear all ticks? <button class="btn" type="button" id="reset-yes">Yes, reset</button><button class="btn" type="button" id="reset-no">Cancel</button></span>`;return;}
   if(e.target.id==="reset-yes"){state.done={};queueSave();renderAll();resetBtn();return;}
   if(e.target.id==="reset-no"){resetBtn();return;}
+});
+document.addEventListener("keydown",e=>{
+  if(!lessonId)return;
+  if(e.key==="Escape"){closeLesson();return;}
+  if(e.target.closest&&e.target.closest("input,textarea,select"))return;
+  const n=DAY[lessonId];
+  if(e.key==="ArrowRight"&&ALL_IDS[n]){openLesson(ALL_IDS[n]);}
+  if(e.key==="ArrowLeft"&&n>1){openLesson(ALL_IDS[n-2]);}
+  if(e.key==="Tab"){const f=[...document.querySelectorAll("#lesson-panel button:not([disabled]), #lesson-panel a, #lesson-panel summary")];if(!f.length)return;
+    if(e.shiftKey&&document.activeElement===f[0]){e.preventDefault();f[f.length-1].focus();}
+    else if(!e.shiftKey&&document.activeElement===f[f.length-1]){e.preventDefault();f[0].focus();}}
 });
 function resetBtn(){document.getElementById("reset-area").innerHTML=`<button class="btn" id="reset-btn" type="button">Reset progress</button>`;}
 
@@ -679,7 +863,11 @@ function resetBtn(){document.getElementById("reset-area").innerHTML=`<button cla
 document.getElementById("lib").innerHTML=LIB.map(g=>`<div class="panel"><h3>${esc(g.h)}</h3><ul class="res">${g.items.map(i=>`<li><a href="${i[1]}" target="_blank" rel="noopener"><span>${esc(i[0])}<small>${esc(i[2])}</small></span></a></li>`).join("")}</ul></div>`).join("");
 
 /* initial view */
-(function init(){const cur=currentWeek();view=cur?cur.p.n:"all";if(cur)open.add(cur.n);renderAll();setStatus();})();
+(function init(){
+  const cur=currentWeek();view=cur?cur.p.n:"all";if(cur)open.add(cur.n);renderAll();setStatus();initBank();
+  const m=location.hash.match(/^#day-(\d+)$/);if(m){const id=ALL_IDS[+m[1]-1];if(id)openLesson(id);}
+})();
+window.addEventListener("hashchange",()=>{const m=location.hash.match(/^#day-(\d+)$/);if(m){const id=ALL_IDS[+m[1]-1];if(id&&id!==lessonId)openLesson(id);}});
 
 </script>
 </body>

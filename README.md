@@ -1,6 +1,18 @@
 # Zero to AI Engineer
 
-A 48-week, week-by-week roadmap tracker that goes from your first line of Python to shipping AI agents. Tick off topics and projects as you go, and your progress is saved in your browser.
+A 48-week roadmap from your first line of Python to shipping AI agents, broken into **296 daily lessons**. Each day tells you why the topic matters, explains it simply, and gives you something to build. Your progress is saved in your browser.
+
+## Every day's lesson includes
+
+- **Motto:** why this topic is worth learning
+- **In simple words:** a plain-English explanation with an everyday analogy
+- **Key concepts:** the handful of ideas to remember
+- **Hands-on task:** step-by-step things to build or try
+- **Starter code:** copy-ready code for most topics
+- **Interview questions:** 2–3 likely questions with model answers (500 in total)
+- **Common mistakes:** what trips people up
+- **You're done when:** a clear finish line
+- **Learn from:** the best free resources for that week
 
 ## What it covers
 
@@ -29,17 +41,24 @@ The whole path takes about 9 hours a week.
 
 ## Features
 
-- Progress tracking by task, week and phase, with a colour-coded progress bar
-- An "Up next" card that jumps straight to your current week
+- A "Today" card that opens your next unfinished day's lesson
+- A lesson view with previous and next day buttons, arrow-key navigation, and "Mark day complete"
+- Shareable links to any day, for example `/#day-42`
+- An interview question bank with search and phase filters
+- Progress tracking by day, week and phase, with a colour-coded progress bar
 - "Mark week done" to skip topics you already know
 - A diagram showing how AI, ML, deep learning, Gen AI and agents fit together
 - A library of the best free channels, courses and books
 - Light and dark mode, and a mobile-friendly layout
-- No build step and no dependencies: a single `index.html`
+- No build step and no dependencies: `index.html` plus lesson data in `lessons/p1.js` … `lessons/p10.js`
+
+## Editing lessons
+
+Each phase's lessons live in `lessons/pN.js`, keyed by task id (`w12-3` is week 12, topic 3; `w12-p` is that week's project). Fields: `m` motto, `e` simple explanation, `k` key concepts, `t` task steps, `c` starter code, `q` interview questions as `[question, answer]`, `x` common mistakes, `d` done-when, `min` estimated minutes.
 
 ## Run locally
 
-Open `index.html` in any browser, or serve the folder:
+Serve the folder (opening the file directly also works):
 
 ```bash
 python3 -m http.server 8000
