@@ -1,6 +1,5 @@
 /* Phase 1: Python Foundations (Weeks 1-5) */
-window.LESSONS = window.LESSONS || {};
-Object.assign(window.LESSONS, {
+export default {
 
 /* ---------- Week 1: Setup and Python basics ---------- */
 "w1-1": {
@@ -697,4 +696,4 @@ def test_health():
  d: "The API runs, tests pass, and a stranger could use it from your README.",
  min: 240
 }
-});
+};

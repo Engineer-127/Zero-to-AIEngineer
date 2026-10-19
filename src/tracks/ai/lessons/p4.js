@@ -1,6 +1,5 @@
 /* Phase 4: Deep Learning (Weeks 18-24) */
-window.LESSONS = window.LESSONS || {};
-Object.assign(window.LESSONS, {
+export default {
 
 /* ---------- Week 18: Neural network fundamentals ---------- */
 "w18-1": {
@@ -588,4 +587,4 @@ pipe(num_inference_steps=100).images[0].save("sample.png")`,
  d: "Live demo and model card.",
  min: 300
 }
-});
+};

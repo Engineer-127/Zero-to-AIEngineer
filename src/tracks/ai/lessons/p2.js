@@ -1,6 +1,5 @@
 /* Phase 2: Data & Math for AI (Weeks 6-10) */
-window.LESSONS = window.LESSONS || {};
-Object.assign(window.LESSONS, {
+export default {
 
 /* ---------- Week 6: NumPy ---------- */
 "w6-1": {
@@ -560,4 +559,4 @@ print(ps[loglik.argmax()], flips.mean())`,
  d: "REPORT.md gives a clear recommendation with numbers.",
  min: 180
 }
-});
+};

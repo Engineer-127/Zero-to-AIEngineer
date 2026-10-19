@@ -1,8 +1,7 @@
 /* Phase 11: AI & Application Security (Weeks 49-54)
    Ethical, defensive, legal-labs-only. The rule throughout:
    only ever test systems you own or have written permission to test. */
-window.LESSONS = window.LESSONS || {};
-Object.assign(window.LESSONS, {
+export default {
 
 /* ---------- Week 49: The rules, and the lab ---------- */
 "w49-1": {
@@ -529,4 +528,4 @@ def redact(text):
  d: "A published before/after security report on your own project.",
  min: 240
 }
-});
+};

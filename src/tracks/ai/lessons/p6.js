@@ -1,6 +1,5 @@
 /* Phase 6: NLP & Speech (Weeks 30-32) */
-window.LESSONS = window.LESSONS || {};
-Object.assign(window.LESSONS, {
+export default {
 
 /* ---------- Week 30: Classic NLP ---------- */
 "w30-1": {
@@ -257,4 +256,4 @@ print(model.transcribe("voice_note_te.m4a", task="translate")["text"])`,
  d: "Voice search demo works in both languages.",
  min: 300
 }
-});
+};

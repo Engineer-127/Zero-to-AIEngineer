@@ -1,6 +1,5 @@
 /* Phase 9: Classical AI & Cognitive Computing (Weeks 43-45) */
-window.LESSONS = window.LESSONS || {};
-Object.assign(window.LESSONS, {
+export default {
 
 /* ---------- Week 43: Classical AI ---------- */
 "w43-1": {
@@ -241,4 +240,4 @@ model.save("ppo_cartpole")`,
  d: "Average reward above 200 with a video.",
  min: 240
 }
-});
+};

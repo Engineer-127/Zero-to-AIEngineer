@@ -1,6 +1,5 @@
 /* Phase 3: Machine Learning (Weeks 11-17) */
-window.LESSONS = window.LESSONS || {};
-Object.assign(window.LESSONS, {
+export default {
 
 /* ---------- Week 11: ML fundamentals ---------- */
 "w11-1": {
@@ -676,4 +675,4 @@ st.metric("Survival chance", f"{p:.0%}")
  d: "A live link you can share.",
  min: 360
 }
-});
+};

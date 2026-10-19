@@ -1,6 +1,5 @@
 /* Phase 8: Agentic AI (Weeks 39-42) */
-window.LESSONS = window.LESSONS || {};
-Object.assign(window.LESSONS, {
+export default {
 
 /* ---------- Week 39: Agent fundamentals ---------- */
 "w39-1": {
@@ -262,4 +261,4 @@ if __name__ == "__main__":
  d: "Working agent with evals and approval flow.",
  min: 480
 }
-});
+};

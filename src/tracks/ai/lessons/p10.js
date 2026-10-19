@@ -1,6 +1,5 @@
 /* Phase 10: MLOps, Deployment & Career (Weeks 46-48) */
-window.LESSONS = window.LESSONS || {};
-Object.assign(window.LESSONS, {
+export default {
 
 /* ---------- Week 46: Shipping models ---------- */
 "w46-1": {
@@ -230,4 +229,4 @@ jobs:
  d: "Portfolio live and linked everywhere.",
  min: 240
 }
-});
+};
