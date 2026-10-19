@@ -1,11 +1,12 @@
-# Zero to MERN Developer · Zero to AI Engineer
+# Zero to MERN Developer · Zero to AI Engineer · Zero to Ethical Hacker
 
-Two free, day-by-day learning paths in one React app. A toggle at the top switches between them, and each path saves its own progress in your browser.
+Three free, day-by-day learning paths in one React app. A toggle at the top switches between them, and each path saves its own progress in your browser.
 
 | Path | Length | Who it's for |
 |---|---|---|
 | **Zero to MERN Developer** (default) | 13 weeks · **91 daily lessons** (about 90 days, or 60 on the fast track) | People with **no coding background** who want to become full-stack web developers |
 | **Zero to AI Engineer** | 54 weeks · 338 daily lessons | From your first line of Python to shipping AI agents and securing AI apps |
+| **Zero to Ethical Hacker** (Cyber Security) | 12 weeks · 84 daily lessons | Ethical hacking and cyber security, taught the legal way: labs-only, defence-focused |
 
 ## Every day's lesson includes
 
@@ -35,6 +36,22 @@ Projects you build along the way: an About Me site, a responsive portfolio (live
 
 **Pace:** Steady is 90 days at about 1.5 hours a day. Fast track is 60 days at about 2.5 hours a day (three lessons every two days).
 
+## Zero to Ethical Hacker (Cyber Security)
+
+> **This path is strictly ethical and legal.** You only ever practise on systems you own (your own lab VMs), on official training platforms (TryHackMe, Hack The Box, PortSwigger, OWASP Juice Shop), or on in-scope bug-bounty targets. Accessing, scanning or attacking any other system without written permission is a crime, including under India's IT Act, 2000 and the US CFAA. The roadmap teaches real skills, recon, web hacking, exploitation, privilege escalation and, equally, defence, entirely within authorised environments, and it pairs every attack with its fix. It will not help anyone attack systems they aren't authorised to test.
+
+| Phase | Topic | Weeks | Days |
+|---|---|---|---|
+| 1 | Foundations, Ethics & Your Lab: the law, the hacker mindset, CIA triad, building an isolated lab (VirtualBox, Kali, vulnerable VMs) | 1–2 | 1–14 |
+| 2 | Networking & Linux: TCP/IP, ports, the TCP handshake, DNS/HTTP, Wireshark, the Linux CLI, permissions, Bash, SSH | 3–4 | 15–28 |
+| 3 | Reconnaissance & Scanning: passive OSINT, WHOIS/DNS/certs, Google dorking, host discovery, Nmap, service enumeration | 5–6 | 29–42 |
+| 4 | Web Application Security: the OWASP Top 10, Burp Suite, access control/IDOR, auth flaws, SQLi, XSS, CSRF/SSRF, on PortSwigger & Juice Shop | 7–8 | 43–56 |
+| 5 | Exploitation & Privilege Escalation: CVEs, Metasploit, shells, password cracking, Linux/Windows privesc, post-exploitation, each with its defence | 9–10 | 57–70 |
+| 6 | Defensive Security & Blue Team: SOC basics, log analysis, MITRE ATT&CK, SIEM detections, incident response, defence in depth | 11 | 71–77 |
+| 7 | Capstone, Certifications & Career: a full lab pentest and report, cert roadmap (Security+, eJPT, PNPT, OSCP), CTFs, in-scope bug bounties, job search | 12 | 78–84 |
+
+Projects are all on authorised targets: building and verifying an isolated lab, OverTheWire Bandit, an annotated Wireshark capture, a passive OSINT report on a domain you own, a full Metasploitable enumeration, PortSwigger and Juice Shop write-ups, compromising beginner VulnHub/TryHackMe boxes, a two-technique privilege-escalation write-up, an ATT&CK-mapped incident report, and a **capstone penetration-test report**. Every sensitive lesson carries a "Stay legal" note, and the roadmap page shows a legal banner and a jargon buster.
+
 ## Zero to AI Engineer
 
 > **Phase 11 (AI & Application Security) is ethical hacking, taught the legal way.** Every exercise uses deliberately vulnerable practice apps, official training labs (PortSwigger, TryHackMe, OWASP Juice Shop), or systems you own. The rule throughout: only ever test systems you own or have written permission to test. Unauthorised access to any other system is a crime (in India, under the IT Act, 2000).
@@ -55,10 +72,10 @@ Projects you build along the way: an About Me site, a responsive portfolio (live
 
 ## Features
 
-- A track toggle at the top: **MERN Developer** first, then **AI Engineer**. The app remembers your last choice
+- A track toggle at the top: **MERN Developer** first, then **AI Engineer**, then **Cyber Security**. The app remembers your last choice
 - A "Today" card that opens your next unfinished day's lesson
 - A lesson view with previous and next day buttons, arrow-key navigation, and "Mark day complete"
-- Shareable links to any day, for example `/#mern/day-12` or `/#ai/day-42` (old `/#day-42` links still open the AI track)
+- Shareable links to any day, for example `/#mern/day-12`, `/#ai/day-42` or `/#cyber/day-30` (old `/#day-42` links still open the AI track)
 - An interview question bank per track, with search and phase filters
 - Progress tracking by day, week and phase, saved separately for each track
 - "Mark week done" to skip topics you already know
@@ -91,7 +108,8 @@ src/
 ├── styles.css
 └── tracks/
     ├── mern/               # index.jsx (copy, diagram, glossary), roadmap.js, lessons/p1–p5.js
-    └── ai/                 # index.jsx, roadmap.js, lessons/p1–p11.js
+    ├── ai/                 # index.jsx, roadmap.js, lessons/p1–p11.js
+    └── cyber/              # index.jsx (legal banner, lifecycle diagram, glossary), roadmap.js, lessons/p1–p7.js
 ```
 
 Each track is loaded only when it's opened, so visitors to one path don't download the other's lessons.

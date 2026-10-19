@@ -9,6 +9,7 @@ import { Bank, Glossary, Library, Rules, SectionHead, Summary } from "./componen
 const TRACKS = [
   { id: "mern", label: "MERN Developer", sub: "91 days · beginner friendly", title: "Zero to MERN Developer", load: () => import("./tracks/mern/index.jsx") },
   { id: "ai", label: "AI Engineer", sub: "54 weeks · 338 days", title: "Zero to AI Engineer", load: () => import("./tracks/ai/index.jsx") },
+  { id: "cyber", label: "Cyber Security", sub: "84 days · ethical & legal", title: "Zero to Ethical Hacker", load: () => import("./tracks/cyber/index.jsx") },
 ];
 const BY_ID = Object.fromEntries(TRACKS.map((t) => [t.id, t]));
 const PREF_KEY = "zero-to-x-track";
@@ -16,7 +17,7 @@ const loaded = {};
 
 /* Hash routes: #mern/day-5, #ai/day-42. Plain #day-N is the old AI link format. */
 function parseHash() {
-  const m = location.hash.match(/^#(?:(mern|ai)\/)?day-(\d+)$/);
+  const m = location.hash.match(/^#(?:(mern|ai|cyber)\/)?day-(\d+)$/);
   if (!m) return null;
   return { track: m[1] || "ai", day: +m[2] };
 }
@@ -133,6 +134,11 @@ function TrackView({ track, requestedDay }) {
         </div>
         <h1>{track.title} <span className="arrow">→</span></h1>
         <p className="lede">{track.lede}</p>
+        {track.banner && (
+          <div className="legal-banner" role="note">
+            <b>⚖ Ethical &amp; legal only.</b> {track.banner}
+          </div>
+        )}
         {track.pace && (
           <div className="pace" aria-label="Choose your pace">
             {track.pace.map(([name, len, how]) => (
