@@ -1,6 +1,5 @@
 /* Phase 7: Generative AI & LLMs (Weeks 33-38) */
-window.LESSONS = window.LESSONS || {};
-Object.assign(window.LESSONS, {
+export default {
 
 /* ---------- Week 33: How LLMs work ---------- */
 "w33-1": {
@@ -465,4 +464,4 @@ if q := st.chat_input("Ask about your documents"):
  d: "Live app, evals and demo video.",
  min: 480
 }
-});
+};

@@ -1,6 +1,5 @@
 /* Phase 5: Computer Vision & Perception (Weeks 25-29) */
-window.LESSONS = window.LESSONS || {};
-Object.assign(window.LESSONS, {
+export default {
 
 /* ---------- Week 25: Image fundamentals and OpenCV ---------- */
 "w25-1": {
@@ -418,4 +417,4 @@ out = sess.run(None, {inp: np.random.rand(1, 3, 640, 640).astype(np.float32)})`,
  d: "Real-time demo with IDs and proximity warnings.",
  min: 300
 }
-});
+};
