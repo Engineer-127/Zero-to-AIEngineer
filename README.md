@@ -6,7 +6,7 @@ Three free, day-by-day learning paths in one React app. A toggle at the top swit
 |---|---|---|
 | **Zero to MERN Developer** (default) | 13 weeks · **91 daily lessons** (about 90 days, or 60 on the fast track) | People with **no coding background** who want to become full-stack web developers |
 | **Zero to AI Engineer** | 54 weeks · 338 daily lessons | From your first line of Python to shipping AI agents and securing AI apps |
-| **Zero to Ethical Hacker** (Cyber Security) | 12 weeks · 84 daily lessons | Ethical hacking and cyber security, taught the legal way: labs-only, defence-focused |
+| **Zero to Ethical Hacker** (Cyber Security) | 24 weeks · **168 daily lessons** | A full ethical-hacking & cyber-security masterclass, taught the legal way: labs-only, offence paired with defence, aimed at defending organisations and national infrastructure |
 
 ## Every day's lesson includes
 
@@ -38,19 +38,27 @@ Projects you build along the way: an About Me site, a responsive portfolio (live
 
 ## Zero to Ethical Hacker (Cyber Security)
 
-> **This path is strictly ethical and legal.** You only ever practise on systems you own (your own lab VMs), on official training platforms (TryHackMe, Hack The Box, PortSwigger, OWASP Juice Shop), or on in-scope bug-bounty targets. Accessing, scanning or attacking any other system without written permission is a crime, including under India's IT Act, 2000 and the US CFAA. The roadmap teaches real skills, recon, web hacking, exploitation, privilege escalation and, equally, defence, entirely within authorised environments, and it pairs every attack with its fix. It will not help anyone attack systems they aren't authorised to test.
+> **This path is strictly ethical and legal.** You only ever practise on systems you own (your own lab VMs, including your own Active Directory domain), on official training platforms (TryHackMe, Hack The Box, PortSwigger, CyberDefenders), or on in-scope bug-bounty targets, and malware only inside an isolated lab. Accessing, scanning or attacking any other system without written permission is a crime, including under India's IT Act, 2000 and the US CFAA. The roadmap builds defenders and pairs every attack with its defence; it will not help anyone attack systems they aren't authorised to test.
+
+A 24-week, 168-day masterclass spanning the whole field, offence and defence:
 
 | Phase | Topic | Weeks | Days |
 |---|---|---|---|
-| 1 | Foundations, Ethics & Your Lab: the law, the hacker mindset, CIA triad, building an isolated lab (VirtualBox, Kali, vulnerable VMs) | 1–2 | 1–14 |
-| 2 | Networking & Linux: TCP/IP, ports, the TCP handshake, DNS/HTTP, Wireshark, the Linux CLI, permissions, Bash, SSH | 3–4 | 15–28 |
-| 3 | Reconnaissance & Scanning: passive OSINT, WHOIS/DNS/certs, Google dorking, host discovery, Nmap, service enumeration | 5–6 | 29–42 |
-| 4 | Web Application Security: the OWASP Top 10, Burp Suite, access control/IDOR, auth flaws, SQLi, XSS, CSRF/SSRF, on PortSwigger & Juice Shop | 7–8 | 43–56 |
-| 5 | Exploitation & Privilege Escalation: CVEs, Metasploit, shells, password cracking, Linux/Windows privesc, post-exploitation, each with its defence | 9–10 | 57–70 |
-| 6 | Defensive Security & Blue Team: SOC basics, log analysis, MITRE ATT&CK, SIEM detections, incident response, defence in depth | 11 | 71–77 |
-| 7 | Capstone, Certifications & Career: a full lab pentest and report, cert roadmap (Security+, eJPT, PNPT, OSCP), CTFs, in-scope bug bounties, job search | 12 | 78–84 |
+| 1 | Foundations, Ethics & Your Lab | 1–2 | 1–14 |
+| 2 | Networking & Linux | 3–4 | 15–28 |
+| 3 | Reconnaissance & Scanning | 5–6 | 29–42 |
+| 4 | Web Application Security (OWASP Top 10, Burp) | 7–8 | 43–56 |
+| 5 | Exploitation & Privilege Escalation | 9–10 | 57–70 |
+| 6 | Windows & Active Directory (PowerShell, Kerberos, BloodHound, hardening) | 11–12 | 71–84 |
+| 7 | Blue Team: SOC & Detection Engineering (SIEM, Sigma, hunting, ATT&CK) | 13–14 | 85–98 |
+| 8 | DFIR & Malware Analysis (forensics, Volatility, isolated malware labs) | 15–16 | 99–112 |
+| 9 | Threat Intelligence & Network Defense (MISP, Zeek/Suricata, Security Onion) | 17–18 | 113–126 |
+| 10 | Cryptography & PKI (hashing, AES, public-key, TLS, Cryptopals) | 19 | 127–133 |
+| 11 | Cloud, Containers & Critical Infrastructure (AWS/IAM, Docker/K8s, OT/ICS) | 20–21 | 134–147 |
+| 12 | Wireless, Mobile & Social Engineering | 22 | 148–154 |
+| 13 | Capstone, Certifications & National-Security Career | 23–24 | 155–168 |
 
-Projects are all on authorised targets: building and verifying an isolated lab, OverTheWire Bandit, an annotated Wireshark capture, a passive OSINT report on a domain you own, a full Metasploitable enumeration, PortSwigger and Juice Shop write-ups, compromising beginner VulnHub/TryHackMe boxes, a two-technique privilege-escalation write-up, an ATT&CK-mapped incident report, and a **capstone penetration-test report**. Every sensitive lesson carries a "Stay legal" note, and the roadmap page shows a legal banner and a jargon buster.
+Every sensitive lesson carries a "Stay legal" note; the roadmap page shows a legal banner, a lifecycle diagram and a jargon buster. Projects (all on authorised targets) include an isolated lab, OverTheWire Bandit, a Wireshark capture, an OSINT report, a Metasploitable enumeration, PortSwigger/Juice Shop write-ups, an Active Directory attack-path assessment, a lab detection pipeline with tested Sigma detections, a DFIR case, a safe malware-analysis report, an open-source threat profile, a network-monitoring deployment, a TLS/Cryptopals audit, a cloud-security assessment, an OT/ICS defensive plan, an authorised phishing simulation, and a full capstone penetration-test report.
 
 ## Zero to AI Engineer
 
@@ -74,8 +82,8 @@ Projects are all on authorised targets: building and verifying an isolated lab, 
 
 - A track toggle at the top: **MERN Developer** first, then **AI Engineer**, then **Cyber Security**. The app remembers your last choice
 - A "Today" card that opens your next unfinished day's lesson
-- A lesson view with previous and next day buttons, arrow-key navigation, and "Mark day complete"
-- Shareable links to any day, for example `/#mern/day-12`, `/#ai/day-42` or `/#cyber/day-30` (old `/#day-42` links still open the AI track)
+- Every lesson is its own routed page (no popups or dialogs), with previous/next day buttons, arrow-key navigation, a back-to-roadmap link, and "Mark day complete"
+- Fully route-based: the roadmap, each track and every day are URLs (`/#mern`, `/#cyber/day-150`, `/#ai/day-42`); old `/#day-42` links still open the AI track
 - An interview question bank per track, with search and phase filters
 - Progress tracking by day, week and phase, saved separately for each track
 - "Mark week done" to skip topics you already know
@@ -109,7 +117,7 @@ src/
 └── tracks/
     ├── mern/               # index.jsx (copy, diagram, glossary), roadmap.js, lessons/p1–p5.js
     ├── ai/                 # index.jsx, roadmap.js, lessons/p1–p11.js
-    └── cyber/              # index.jsx (legal banner, lifecycle diagram, glossary), roadmap.js, lessons/p1–p7.js
+    └── cyber/              # index.jsx (legal banner, lifecycle diagram, glossary), roadmap.js, lessons/p1–p13.js
 ```
 
 Each track is loaded only when it's opened, so visitors to one path don't download the other's lessons.

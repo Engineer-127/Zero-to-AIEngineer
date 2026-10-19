@@ -1,31 +1,46 @@
-/* Zero to Ethical Hacker: 12 weeks, 84 days. Legal, defensive, labs-only.
-   The rule throughout: only ever test systems you own or are given written
-   permission to test. Unauthorised access to any system is a crime. */
+/* Zero to Ethical Hacker: a 24-week, 168-day masterclass. Legal, defensive, labs-only.
+   The rule throughout: only ever test systems you own or are given written permission
+   to test. Unauthorised access to any system is a crime. */
 export const PHASES=[
  {n:1,name:"Foundations, Ethics & Your Lab",c:"#D1453B",w:[1,2],goal:"Understand the law and the hacker mindset, and build a safe, legal lab on your own computer where you can practise everything that follows."},
  {n:2,name:"Networking & Linux",c:"#D4760A",w:[3,4],goal:"Learn how networks and the Linux command line really work, the two things every security skill is built on."},
- {n:3,name:"Reconnaissance & Scanning",c:"#B38A00",w:[5,6],goal:"Map a target you own or are authorised to test: find hosts, open ports, services and public information, the legal way."},
- {n:4,name:"Web Application Security",c:"#0A8CB0",w:[7,8],goal:"Find and understand the most common web vulnerabilities (the OWASP Top 10) using only official training labs."},
- {n:5,name:"Exploitation & Privilege Escalation",c:"#5C9A12",w:[9,10],goal:"Practise gaining and elevating access on deliberately vulnerable machines you run yourself, and learn how each attack is prevented."},
- {n:6,name:"Defensive Security & Blue Team",c:"#2F68E0",w:[11,11],goal:"See the other side: detect attacks, read logs, use a SIEM, and respond to incidents. Most security jobs are defensive."},
- {n:7,name:"Capstone, Certifications & Career",c:"#7648E0",w:[12,12],goal:"Tie it together with a full lab pentest and report, then plan your certifications, CTFs, in-scope bug bounties and job search."}
+ {n:3,name:"Reconnaissance & Scanning",c:"#C2690A",w:[5,6],goal:"Map a target you own or are authorised to test: find hosts, open ports, services and public information, the legal way."},
+ {n:4,name:"Web Application Security",c:"#B38A00",w:[7,8],goal:"Find and understand the most common web vulnerabilities (the OWASP Top 10) using only official training labs."},
+ {n:5,name:"Exploitation & Privilege Escalation",c:"#7A9A12",w:[9,10],goal:"Practise gaining and elevating access on deliberately vulnerable machines you run yourself, and learn how each attack is prevented."},
+ {n:6,name:"Windows & Active Directory",c:"#5C9A12",w:[11,12],goal:"Master the environment most organisations and government networks run on: Windows internals, PowerShell, and Active Directory attacks and defences in your own lab domain."},
+ {n:7,name:"Blue Team: SOC & Detection Engineering",c:"#0E9468",w:[13,14],goal:"Switch sides and go deep: run a SOC, analyse logs, build SIEM detections, hunt threats and map everything to MITRE ATT&CK. This is where most national-security work happens."},
+ {n:8,name:"DFIR & Malware Analysis",c:"#0A8CB0",w:[15,16],goal:"Investigate breaches like a professional: digital forensics, incident response, and safe static and dynamic malware analysis in an isolated lab."},
+ {n:9,name:"Threat Intelligence & Network Defense",c:"#2F68E0",w:[17,18],goal:"Understand adversaries and watch the wire: cyber threat intelligence, network security monitoring, and defending infrastructure at scale."},
+ {n:10,name:"Cryptography & PKI",c:"#4B5BD6",w:[19,19],goal:"Learn the maths that protects everything: hashing, symmetric and public-key crypto, TLS and PKI, how they fail, and how to use them correctly."},
+ {n:11,name:"Cloud, Containers & Critical Infrastructure",c:"#7648E0",w:[20,21],goal:"Secure modern and vital systems: cloud and container security, and protecting the operational technology (OT/ICS) that runs power, water and transport."},
+ {n:12,name:"Wireless, Mobile & Social Engineering",c:"#9B3CC9",w:[22,22],goal:"Cover the remaining attack surface: Wi-Fi (on your own network), mobile app security, and defending against the human-focused attacks that cause most breaches."},
+ {n:13,name:"Capstone, Certifications & National-Security Career",c:"#C13584",w:[23,24],goal:"Run a full-scope engagement end to end, write a professional report, and plan your certifications, specialisation and a career defending organisations and national infrastructure."}
 ];
 
 export const R={
+ /* law & ethics */
  itact:["India IT Act, 2000 (know the law)","https://www.meity.gov.in/content/information-technology-act-2000"],
  cfaa:["US Computer Fraud and Abuse Act (overview)","https://www.justice.gov/criminal/criminal-ccips"],
  eccouncil:["EC-Council: Code of Ethics","https://www.eccouncil.org/code-of-ethics/"],
+ certin:["CERT-In (India's national incident response team)","https://www.cert-in.org.in/"],
+ nciipc:["NCIIPC (India's critical information infrastructure body)","https://nciipc.gov.in/"],
+ nistcsf:["NIST Cybersecurity Framework","https://www.nist.gov/cyberframework"],
+ iso27001:["ISO/IEC 27001 (information security management)","https://www.iso.org/isoiec-27001-information-security.html"],
+ /* platforms & labs */
  thm:["TryHackMe (guided, legal labs)","https://tryhackme.com/"],
  thmIntro:["TryHackMe: Complete Beginner path","https://tryhackme.com/path/outline/beginner"],
  thmPreSec:["TryHackMe: Pre Security path","https://tryhackme.com/path/outline/presecurity"],
  thmJr:["TryHackMe: Jr Penetration Tester path","https://tryhackme.com/path/outline/jrpenetrationtester"],
  thmSoc:["TryHackMe: SOC Level 1 path","https://tryhackme.com/path/outline/soclevel1"],
+ thmSoc2:["TryHackMe: SOC Level 2 / Cyber Defense","https://tryhackme.com/paths"],
+ thmAD:["TryHackMe: Active Directory rooms","https://tryhackme.com/"],
  htb:["Hack The Box (legal labs)","https://www.hackthebox.com/"],
  htbAcademy:["Hack The Box Academy (free modules)","https://academy.hackthebox.com/"],
  portswigger:["PortSwigger Web Security Academy (free)","https://portswigger.net/web-security"],
  owasp:["OWASP Top 10","https://owasp.org/www-project-top-ten/"],
  owaspApi:["OWASP API Security Top 10","https://owasp.org/API-Security/"],
  owaspWstg:["OWASP Web Security Testing Guide","https://owasp.org/www-project-web-security-testing-guide/"],
+ owaspMasvs:["OWASP Mobile Application Security (MASVS/MASTG)","https://mas.owasp.org/"],
  juiceshop:["OWASP Juice Shop (vulnerable app to run yourself)","https://owasp.org/www-project-juice-shop/"],
  dvwa:["DVWA: Damn Vulnerable Web App","https://github.com/digininja/DVWA"],
  vulnhub:["VulnHub (vulnerable VMs to run offline)","https://www.vulnhub.com/"],
@@ -34,6 +49,9 @@ export const R={
  virtualbox:["VirtualBox manual","https://www.virtualbox.org/manual/"],
  linuxjourney:["Linux Journey (free)","https://linuxjourney.com/"],
  overthewire:["OverTheWire: Bandit (Linux/SSH wargame)","https://overthewire.org/wargames/bandit/"],
+ picoctf:["picoCTF (beginner CTF)","https://picoctf.org/"],
+ ctftime:["CTFtime (find CTF events)","https://ctftime.org/"],
+ /* recon / scanning / exploitation */
  nmap:["Nmap reference guide","https://nmap.org/book/man.html"],
  wireshark:["Wireshark User's Guide","https://www.wireshark.org/docs/wsug_html_chunked/"],
  burp:["Burp Suite documentation","https://portswigger.net/burp/documentation"],
@@ -41,71 +59,161 @@ export const R={
  hashcat:["Hashcat wiki","https://hashcat.net/wiki/"],
  gtfobins:["GTFOBins (Linux privesc reference)","https://gtfobins.github.io/"],
  lolbas:["LOLBAS (Windows living-off-the-land reference)","https://lolbas-project.github.io/"],
+ hausec:["HackTricks (pentest reference wiki)","https://book.hacktricks.xyz/"],
+ /* windows / AD */
+ msDocs:["Microsoft Learn: Windows security","https://learn.microsoft.com/en-us/windows/security/"],
+ adSecurity:["Active Directory security fundamentals (Microsoft Learn)","https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/"],
+ powershell:["PowerShell documentation","https://learn.microsoft.com/en-us/powershell/"],
+ bloodhound:["BloodHound Community docs (AD attack paths)","https://bloodhound.readthedocs.io/"],
+ sysinternals:["Sysinternals suite (Windows internals tools)","https://learn.microsoft.com/en-us/sysinternals/"],
+ /* blue team / SOC / detection */
  mitre:["MITRE ATT&CK","https://attack.mitre.org/"],
- nistir:["NIST Computer Security Incident Handling Guide (SP 800-61)","https://csrc.nist.gov/pubs/sp/800/61/r2/final"],
+ mitreIcs:["MITRE ATT&CK for ICS","https://attack.mitre.org/matrices/ics/"],
+ sigma:["Sigma (generic SIEM detection rules)","https://github.com/SigmaHQ/sigma"],
+ splunk:["Splunk free & Boss of the SOC","https://www.splunk.com/en_us/training/free-courses/overview.html"],
+ elastic:["Elastic Security docs","https://www.elastic.co/guide/en/security/current/index.html"],
+ wazuh:["Wazuh (open-source XDR/SIEM) docs","https://documentation.wazuh.com/"],
+ securityonion:["Security Onion (network security monitoring)","https://docs.securityonion.net/"],
  cyberdefenders:["CyberDefenders (blue-team labs)","https://cyberdefenders.org/"],
  letsdefend:["LetsDefend (SOC practice)","https://letsdefend.io/"],
+ nistir:["NIST Computer Security Incident Handling Guide (SP 800-61)","https://csrc.nist.gov/pubs/sp/800/61/r2/final"],
+ /* DFIR / malware */
+ sansDfir:["SANS DFIR resources & cheat sheets","https://www.sans.org/cyber-security-courses/?focus-area=digital-forensics"],
+ autopsy:["Autopsy (open-source disk forensics)","https://www.autopsy.com/"],
+ volatility:["Volatility (memory forensics)","https://volatilityfoundation.org/"],
+ eztools:["Eric Zimmerman's forensic tools","https://ericzimmerman.github.io/"],
+ dfirreport:["The DFIR Report (real intrusion write-ups)","https://thedfirreport.com/"],
+ remnux:["REMnux (malware-analysis Linux toolkit)","https://remnux.org/"],
+ flareVm:["FLARE VM (Windows malware-analysis lab)","https://github.com/mandiant/flare-vm"],
+ anyrun:["ANY.RUN (interactive malware sandbox)","https://any.run/"],
+ virustotal:["VirusTotal","https://www.virustotal.com/"],
+ pma:["Practical Malware Analysis (reference book)","https://nostarch.com/malware"],
+ /* threat intel / network defense */
+ misp:["MISP (threat-intelligence sharing platform)","https://www.misp-project.org/"],
+ opencti:["OpenCTI (threat-intelligence platform)","https://www.filigran.io/en/products/opencti/"],
+ otx:["AlienVault OTX (open threat exchange)","https://otx.alienvault.com/"],
+ zeek:["Zeek (network security monitor)","https://docs.zeek.org/"],
+ suricata:["Suricata (IDS/IPS) docs","https://docs.suricata.io/"],
+ pyramid:["The Pyramid of Pain (threat-intel concept)","https://detect-respond.blogspot.com/2013/03/the-pyramid-of-pain.html"],
+ /* crypto */
+ cryptopals:["Cryptopals crypto challenges (legal)","https://cryptopals.com/"],
+ boneh:["Cryptography I, Dan Boneh (free course)","https://www.coursera.org/learn/crypto"],
+ nistCrypto:["NIST cryptographic standards","https://csrc.nist.gov/projects/cryptographic-standards-and-guidelines"],
+ ssllabs:["SSL Labs (test your own TLS config)","https://www.ssllabs.com/ssltest/"],
+ /* cloud / containers / OT */
+ awsSec:["AWS Well-Architected: Security Pillar","https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/welcome.html"],
+ cis:["CIS Benchmarks (hardening standards)","https://www.cisecurity.org/cis-benchmarks"],
+ flaws:["flAWS.cloud (legal AWS security challenge)","http://flaws.cloud/"],
+ cloudgoat:["CloudGoat (vulnerable AWS lab, your own account)","https://github.com/RhinoSecurityLabs/cloudgoat"],
+ k8sSec:["Kubernetes security docs","https://kubernetes.io/docs/concepts/security/"],
+ dockerSec:["Docker security docs","https://docs.docker.com/engine/security/"],
+ cisaIcs:["CISA: Industrial Control Systems resources","https://www.cisa.gov/topics/industrial-control-systems"],
+ /* wireless / mobile / social */
+ aircrack:["Aircrack-ng docs (test only your own Wi-Fi)","https://www.aircrack-ng.org/documentation.html"],
+ gophish:["Gophish (phishing simulation for your own org)","https://getgophish.com/"],
+ sans:["SANS security-awareness resources","https://www.sans.org/security-awareness-training/resources/"],
+ /* bug bounty / certs */
  hackerone:["HackerOne: Hacktivity & programs (in-scope only)","https://www.hackerone.com/"],
  bugcrowd:["Bugcrowd: programs & VRT","https://www.bugcrowd.com/"],
  disclose:["disclose.io: safe-harbour & scope","https://disclose.io/"],
- picoctf:["picoCTF (beginner CTF)","https://picoctf.org/"],
- ctftime:["CTFtime (find CTF events)","https://ctftime.org/"],
  securityplus:["CompTIA Security+ objectives","https://www.comptia.org/certifications/security"],
  ejpt:["INE / eJPT (entry pentest cert)","https://security.ine.com/certifications/ejpt-certification/"],
  pnpt:["TCM Security / PNPT","https://certifications.tcm-sec.com/pnpt/"],
  oscp:["OffSec OSCP (PEN-200)","https://www.offsec.com/courses/pen-200/"],
- tcmLinux:["TCM Security: Linux Privilege Escalation","https://academy.tcm-sec.com/"],
- hausec:["HackTricks (pentest reference wiki)","https://book.hacktricks.xyz/"]
+ gcih:["GIAC certifications (GSEC, GCIH, GCFA)","https://www.giac.org/"],
+ tcmLinux:["TCM Security Academy","https://academy.tcm-sec.com/"]
 };
 
 export const WEEKS=[
-/* Phase 1: Foundations, Ethics & Your Lab */
+/* ===== Phase 1: Foundations, Ethics & Your Lab (W1-2) ===== */
 {t:"The law, ethics and the hacker mindset",h:8,goal:"Before any tool, understand what is legal, what is not, and how an ethical hacker actually thinks.",
  tasks:["Authorisation first: the one rule that separates a security professional from a criminal","The law where you live: India's IT Act 2000 (and the US CFAA) in plain terms","White-hat, grey-hat, black-hat: why only written permission makes you a white-hat","Scope, rules of engagement and safe harbour: what a signed authorisation actually says","The hacker mindset: curiosity, patience and thinking about how systems can go wrong","CIA triad (Confidentiality, Integrity, Availability) and the vocabulary of security"],
  proj:"Write your own one-page 'Rules of Engagement' template and a personal ethics pledge you'll follow for the whole course",res:["itact","cfaa","eccouncil","thmPreSec"],skills:["Cyber law basics","Ethics","Scope & authorisation","CIA triad"]},
 {t:"Build your legal practice lab",h:9,goal:"Create an isolated lab on your own machine so you can practise everything safely and legally, offline.",
  tasks:["Why a lab: you may only attack machines you own or are authorised to test, so you build your own targets","Install VirtualBox (or VMware) and learn snapshots: instant undo for broken machines","Set up Kali Linux as your attacker VM","Add a deliberately vulnerable target VM you own (Metasploitable 2 or an OWASP Juice Shop container)","Host-only / NAT networking: keep the lab isolated from your home network and the internet","Create accounts on TryHackMe and Hack The Box: legal, sandboxed labs you don't have to build"],
  proj:"A working home lab: Kali plus one vulnerable VM on an isolated network, with clean snapshots, and your first TryHackMe room completed",res:["virtualbox","kali","metasploitable","juiceshop","thm","htb"],skills:["Virtualisation","Kali Linux","Lab isolation","Snapshots"]},
-/* Phase 2: Networking & Linux */
+/* ===== Phase 2: Networking & Linux (W3-4) ===== */
 {t:"How networks work",h:9,goal:"Understand the plumbing of the internet: without this, every scan and exploit is just magic words.",
  tasks:["The OSI and TCP/IP models: how data is wrapped in layers to travel the network","IP addresses, subnets and MAC addresses: how machines are found and identified","Ports and the common services behind them (80/443 web, 22 SSH, 53 DNS, 445 SMB)","TCP vs UDP, and the three-way handshake that scanners rely on","DNS, HTTP/HTTPS and how a web request really travels","Capture real traffic in Wireshark on your own lab network and read a packet"],
  proj:"Use Wireshark to capture and annotate a full web request and a TCP handshake between your own lab machines",res:["thmPreSec","wireshark","linuxjourney"],skills:["TCP/IP","Ports & protocols","DNS/HTTP","Wireshark"]},
 {t:"Linux for security",h:10,goal:"Live on the Linux command line, where almost all security tooling runs.",
  tasks:["The filesystem, navigation and the shell: pwd, ls, cd, cat, less","Users, groups, sudo and file permissions (the rwx bits) that privilege escalation abuses","Finding things: find, grep, pipes and redirection to chain commands","Processes, services and networking commands: ps, ss, systemctl, ip","Bash scripting basics: automate a repetitive task","SSH: connect to machines securely, and key-based auth"],
  proj:"Finish OverTheWire's Bandit wargame up to at least level 15, keeping notes on each command you learn",res:["linuxjourney","overthewire","kali","htbAcademy"],skills:["Linux CLI","Permissions","Bash","SSH","grep/find"]},
-/* Phase 3: Reconnaissance & Scanning */
+/* ===== Phase 3: Reconnaissance & Scanning (W5-6) ===== */
 {t:"Passive reconnaissance (OSINT)",h:8,goal:"Learn what a target reveals publicly, using only information that is already open, on a target you're authorised to assess.",
  tasks:["Passive vs active recon: why passive touches nothing of the target directly","OSINT from public sources: WHOIS, DNS records, certificate transparency logs","Google dorking: advanced search operators to find exposed information","Finding subdomains and employee/email patterns from public data","How your own online footprint looks to an attacker (do this on yourself first)","Document findings cleanly: screenshots, sources and timestamps"],
  proj:"Run an OSINT assessment on a domain you own (or your own name), and write up what a stranger could learn and how to reduce it",res:["thmJr","owaspWstg","hausec"],skills:["OSINT","WHOIS/DNS","Google dorking","Footprinting"]},
 {t:"Active scanning and enumeration",h:10,goal:"Map hosts, ports and services on machines in your own lab or an authorised scope.",
  tasks:["Host discovery: which machines are alive on the lab network","Port scanning with Nmap: TCP connect, SYN scans and when to use each","Service and version detection, and the Nmap Scripting Engine (NSE)","Enumerating common services: web, SMB, SSH, FTP, DNS","Why noisy scanning is detectable, and why scope and rate limits matter","Turn scan output into an organised list of findings to investigate"],
  proj:"Fully enumerate your Metasploitable 2 VM with Nmap and produce a tidy host/port/service inventory",res:["nmap","thmJr","metasploitable","hausec"],skills:["Nmap","Port scanning","Service enumeration","NSE"]},
-/* Phase 4: Web Application Security */
+/* ===== Phase 4: Web Application Security (W7-8) ===== */
 {t:"Web hacking foundations and the OWASP Top 10",h:10,goal:"Understand the most common web vulnerabilities and practise them only on official training labs.",
  tasks:["How web apps work: requests, responses, cookies, sessions and the same-origin idea","Set up Burp Suite as an intercepting proxy against your own lab app","The OWASP Top 10: a tour of the ten most common risk categories","Broken access control and IDOR: the single most common real-world bug","Authentication and session flaws: weak logins, session fixation","Work the first PortSwigger Academy labs (access control, authentication)"],
  proj:"Complete a set of PortSwigger access-control and authentication labs and write up how each is fixed",res:["portswigger","owasp","burp","juiceshop"],skills:["Burp Suite","OWASP Top 10","Access control","Auth testing"]},
 {t:"Injection, XSS and web exploitation practice",h:10,goal:"Go deeper on injection-style bugs, always on labs built for learning, and learn the defence for each.",
  tasks:["SQL injection: how it works, and why parameterised queries stop it","Cross-site scripting (XSS): reflected, stored and DOM, and how output encoding stops it","CSRF and SSRF in concept, with the defences (tokens, allow-lists)","File upload and path traversal issues, and safe handling","Chaining small bugs into a bigger impact (on the lab app)","For every bug: write the vulnerable code and the fixed code side by side"],
  proj:"Reach a milestone in OWASP Juice Shop (e.g. a score tier) and document each flaw with its root cause and fix",res:["portswigger","juiceshop","dvwa","owaspWstg"],skills:["SQLi","XSS","CSRF/SSRF","Secure coding"]},
-/* Phase 5: Exploitation & Privilege Escalation */
+/* ===== Phase 5: Exploitation & Privilege Escalation (W9-10) ===== */
 {t:"Exploitation on vulnerable machines you own",h:10,goal:"Practise the full attack chain on deliberately vulnerable VMs you run yourself, and understand each defence.",
  tasks:["From a finding to a foothold: matching a service version to a known vulnerability (CVEs)","Using Metasploit responsibly against your own Metasploitable VM","Reverse vs bind shells: how a shell connects back, and how firewalls stop it","Default and weak credentials: why they're still the number-one way in","Password attacks in the lab: hashing, cracking with Hashcat, and why strong hashing + MFA defeats it","Note-taking and evidence: a repeatable methodology"],
  proj:"Compromise a beginner VulnHub/TryHackMe machine end to end in your lab, and write the steps plus the fix for each weakness",res:["metasploitable","vulnhub","thmJr","hashcat","hausec"],skills:["Exploitation workflow","Metasploit","Shells","Password cracking"]},
 {t:"Privilege escalation and post-exploitation",h:10,goal:"Learn how low-level access becomes full control, and, crucially, how defenders prevent it.",
  tasks:["Linux privilege escalation: SUID binaries, sudo misconfigs, cron jobs (use GTFOBins)","Windows privilege escalation concepts: services, tokens, unquoted paths (use LOLBAS)","Enumeration scripts and how to read their output","Why least privilege, patching and hardening shut these paths down","Lateral movement and persistence in concept, and how they're detected","Clean up your lab: restore snapshots and document everything"],
  proj:"Escalate to root/admin on a lab machine using two different techniques, then write the hardening steps that would have blocked each",res:["gtfobins","lolbas","tcmLinux","thmJr","hausec"],skills:["Linux privesc","Windows privesc","Hardening","Least privilege"]},
-/* Phase 6: Defensive Security & Blue Team */
-{t:"Blue team: detection and response",h:10,goal:"Switch sides. Learn to detect the very attacks you practised, which is where most security jobs are.",
- tasks:["Security operations (SOC) basics: what analysts actually do all day","Logs everywhere: system, web, firewall and auth logs, and how to read them","MITRE ATT&CK: a shared language for attacker techniques and detections","SIEM basics: collecting logs and writing a detection for an attack you ran","Incident response lifecycle (NIST): prepare, detect, contain, eradicate, recover","Hardening and defence-in-depth: patching, MFA, segmentation, backups"],
- proj:"Run one of your lab attacks, then detect it from the logs/SIEM and write a short incident report mapped to ATT&CK",res:["thmSoc","mitre","nistir","cyberdefenders","letsdefend"],skills:["SOC analysis","Log analysis","MITRE ATT&CK","SIEM","Incident response"]},
-/* Phase 7: Capstone, Certifications & Career */
-{t:"Capstone, certifications and career",h:12,goal:"Prove your skills end to end, then plan your certs, CTFs, legal bug-bounty practice and job search.",
- tasks:["Capstone: a full assessment of a lab target, from recon to report, in your own environment","Write a professional pentest report: executive summary, findings, risk ratings, remediation","Certification roadmap: Security+, eJPT, PNPT, then OSCP, and which fits your goal","Capture the Flag: sharpen skills legally on picoCTF and CTFtime events","Bug bounty the right way: reading scope, safe harbour, and only in-scope targets","Build your profile: GitHub write-ups, a home-lab blog, LinkedIn and a resume"],
- proj:"A complete capstone pentest report on a lab you own, published as a portfolio write-up, plus a dated study plan for your chosen certification",res:["securityplus","ejpt","pnpt","oscp","picoctf","ctftime","hackerone","disclose"],skills:["Pentest methodology","Report writing","CTFs","Bug-bounty scope","Career"]}
+/* ===== Phase 6: Windows & Active Directory (W11-12) ===== */
+{t:"Windows internals, PowerShell and local security",h:10,goal:"Get fluent on Windows, the system most organisations and government networks actually run.",
+ tasks:["Windows architecture: processes, services, the registry and the event log","PowerShell as a power tool: cmdlets, objects, and reading system state","Windows authentication: accounts, groups, UAC, and how credentials are stored (LSASS, hashes)","Windows file and share permissions (NTFS ACLs) and how they're abused","Sysinternals tools (Process Explorer, Autoruns) for seeing what's really running","Windows logging: the Security event log and what each key event ID means"],
+ proj:"Set up a Windows lab VM, enumerate it with PowerShell and Sysinternals, and document its users, services and key security settings",res:["msDocs","powershell","sysinternals","lolbas"],skills:["Windows internals","PowerShell","NTFS ACLs","Sysinternals","Event logs"]},
+{t:"Active Directory: attacks and defences",h:11,goal:"Understand the identity backbone of enterprise and government networks, and how to attack and defend it in your own lab domain.",
+ tasks:["What Active Directory is: domains, forests, OUs, GPOs and Kerberos","Build a small AD lab domain you own (domain controller + a workstation)","Common AD enumeration: users, groups, and attack-path mapping with BloodHound","Classic AD attacks in concept, on your lab: Kerberoasting, AS-REP roasting, pass-the-hash","Why AD is the crown jewel: compromise it and you often own the network","Defences: tiered admin, least privilege, strong Kerberos config, monitoring and LAPS"],
+ proj:"In your own AD lab, enumerate attack paths with BloodHound, demonstrate one classic attack, and write the specific Microsoft-recommended defence for each finding",res:["adSecurity","bloodhound","thmAD","htbAcademy"],skills:["Active Directory","Kerberos","BloodHound","AD hardening"]},
+/* ===== Phase 7: Blue Team: SOC & Detection Engineering (W13-14) ===== */
+{t:"The SOC, logs and SIEM in depth",h:10,goal:"Switch sides: learn how a Security Operations Centre detects the attacks you now know how to run.",
+ tasks:["What a SOC does: tiers, alerts, triage, escalation and the analyst's day","Log sources that matter: auth, endpoint, web, firewall, DNS, cloud","Centralising logs: how a SIEM collects, parses and correlates events","Hands-on with a SIEM (Splunk free, Elastic or Wazuh): ingest and search logs","Triage an alert end to end: what's malicious, what's noise, and why","Writing a clear, useful alert/triage note"],
+ proj:"Stand up a SIEM in your lab, ingest logs from your Windows/Linux VMs, run an attack against them, and find it in the SIEM",res:["thmSoc","splunk","elastic","wazuh","letsdefend"],skills:["SOC operations","Log analysis","SIEM","Alert triage"]},
+{t:"Detection engineering and threat hunting",h:11,goal:"Go beyond reading alerts: write the detections and proactively hunt for attackers.",
+ tasks:["MITRE ATT&CK as the map: tactics, techniques and detection coverage","Writing detection rules (e.g. Sigma) for techniques you practised offensively","Reducing false positives and tuning detections so real alerts aren't missed","Threat hunting: forming a hypothesis and searching for it in the data","Mapping your detections to ATT&CK and finding coverage gaps","Measuring detection quality: true/false positives and detection-as-code"],
+ proj:"Pick three attacks you ran earlier, write a Sigma (or SIEM) detection for each, test them, and map them to ATT&CK with a coverage note",res:["mitre","sigma","cyberdefenders","thmSoc2"],skills:["Detection engineering","Sigma rules","Threat hunting","ATT&CK mapping"]},
+/* ===== Phase 8: DFIR & Malware Analysis (W15-16) ===== */
+{t:"Digital forensics and incident response (DFIR)",h:11,goal:"Investigate a breach the way professionals do: evidence, timelines and the incident lifecycle.",
+ tasks:["The incident response lifecycle (NIST): prepare, detect, contain, eradicate, recover, learn","Order of volatility and sound evidence handling (chain of custody)","Disk forensics basics with Autopsy: files, deleted data, artefacts","Memory forensics basics with Volatility: processes, network, injected code","Windows forensic artefacts: event logs, registry, prefetch, browser history","Building an incident timeline and writing the investigation report"],
+ proj:"Work a DFIR lab case (e.g. CyberDefenders): investigate the evidence, build a timeline, and write a professional incident report",res:["nistir","autopsy","volatility","eztools","cyberdefenders","sansDfir"],skills:["Incident response","Disk forensics","Memory forensics","Timeline analysis"]},
+{t:"Malware analysis (safe, isolated)",h:11,goal:"Understand malicious software the safe way, in a fully isolated lab, to detect and defend against it.",
+ tasks:["Lab safety first: an isolated malware-analysis VM (REMnux/FLARE), snapshots, no internet","Static analysis basics: hashes, strings, file type, and checking reputation (VirusTotal)","Dynamic analysis basics: detonating a sample in a sandbox and watching its behaviour","Indicators of Compromise (IOCs): what to extract and how defenders use them","Common malware behaviours: persistence, C2, and how detection catches them","Safe sandboxes (ANY.RUN) and why you never run samples outside isolation"],
+ proj:"Analyse a safe sample (e.g. EICAR or a known teaching sample) in an isolated lab, extract IOCs, and write an analysis report with detection ideas",res:["remnux","flareVm","anyrun","virustotal","pma"],skills:["Static analysis","Dynamic analysis","IOC extraction","Sandboxing"]},
+/* ===== Phase 9: Threat Intelligence & Network Defense (W17-18) ===== */
+{t:"Cyber threat intelligence",h:10,goal:"Know your adversaries: how intelligence about attackers is gathered, structured and used to defend.",
+ tasks:["What threat intelligence is: strategic, operational and tactical","IOCs vs TTPs, and the Pyramid of Pain (why behaviour beats hashes)","Threat actors and campaigns: how they're tracked and attributed (carefully)","Intelligence platforms: MISP and OpenCTI, and feeds like OTX","Turning intel into detections and priorities for your SOC","Responsible sourcing: using only legal, open or authorised intelligence"],
+ proj:"Build a small threat-intel profile of a publicly documented actor using open sources, map its TTPs to ATT&CK, and propose detections",res:["mitre","misp","opencti","otx","pyramid"],skills:["Threat intelligence","IOCs & TTPs","MISP/OpenCTI","ATT&CK mapping"]},
+{t:"Network security monitoring and defense",h:11,goal:"Watch the wire at scale and harden the network, the backbone of defending any large or national infrastructure.",
+ tasks:["Network security monitoring: full packet capture, flow data and alerts","IDS/IPS with Suricata: signatures and how detections fire","Zeek: turning traffic into rich logs for hunting","Security Onion: an all-in-one monitoring platform in your lab","Network hardening: segmentation, egress filtering, zero-trust ideas, firewalls","Detecting scanning, C2 and exfiltration in network data"],
+ proj:"Deploy Security Onion (or Zeek + Suricata) in your lab, generate attack traffic from your Kali VM, and detect and document it",res:["securityonion","zeek","suricata","nistcsf"],skills:["Network monitoring","Suricata/Zeek","Segmentation","Traffic analysis"]},
+/* ===== Phase 10: Cryptography & PKI (W19) ===== */
+{t:"Applied cryptography and PKI",h:10,goal:"Learn the maths that protects everything, how it fails, and how to use it correctly.",
+ tasks:["Hashing: what it's for, salting, and why passwords need slow hashes (bcrypt/argon2)","Symmetric encryption (AES) and modes: confidentiality done right","Public-key crypto (RSA, ECC): key exchange, signatures and how it enables HTTPS","TLS and PKI: certificates, chains of trust, and certificate authorities","How crypto breaks in practice: weak algorithms, bad randomness, key reuse, misuse","Legal practice: solve Cryptopals challenges and test your own site's TLS"],
+ proj:"Solve a set of Cryptopals challenges, then audit the TLS configuration of a site you own and write up the findings and fixes",res:["boneh","cryptopals","nistCrypto","ssllabs","cyberchef"],skills:["Hashing","Symmetric & public-key crypto","TLS/PKI","Crypto pitfalls"]},
+/* ===== Phase 11: Cloud, Containers & Critical Infrastructure (W20-21) ===== */
+{t:"Cloud and container security",h:11,goal:"Secure the cloud and container platforms that now run most organisations and services.",
+ tasks:["Cloud fundamentals and the shared-responsibility model","Identity and access in the cloud (IAM): the most common source of cloud breaches","Common cloud misconfigurations: public storage, over-broad permissions, exposed keys","Container security: Docker images, secrets, and the attack surface","Kubernetes security basics: RBAC, network policies, and pod security","Legal practice: a vulnerable-cloud lab in your own account (flAWS.cloud / CloudGoat)"],
+ proj:"Work through flAWS.cloud or deploy CloudGoat in your own account, exploit and then fix the misconfigurations, and write a hardening report",res:["awsSec","cis","flaws","cloudgoat","dockerSec","k8sSec"],skills:["Cloud security","IAM","Container security","Kubernetes"]},
+{t:"OT/ICS and critical infrastructure protection",h:10,goal:"Understand and defend the operational technology that runs power, water, transport and industry, the heart of national security.",
+ tasks:["What OT/ICS is: SCADA, PLCs, and how it differs from IT (safety and uptime first)","Why critical infrastructure is a prime target, and the real-world consequences","Common ICS protocols and weaknesses (legacy, often unauthenticated)","MITRE ATT&CK for ICS: adversary techniques specific to these systems","Defending OT: segmentation (the Purdue model), monitoring, and careful change","India's framework: CERT-In and NCIIPC, and how critical sectors are protected"],
+ proj:"Write a defensive assessment of a (simulated or documented) ICS environment: map risks to ATT&CK for ICS and propose a segmentation and monitoring plan",res:["cisaIcs","mitreIcs","nciipc","certin","nistcsf"],skills:["OT/ICS security","SCADA/PLC basics","Segmentation","Critical-infra defence"]},
+/* ===== Phase 12: Wireless, Mobile & Social Engineering (W22) ===== */
+{t:"Wireless, mobile and the human layer",h:10,goal:"Cover the remaining attack surface and the number-one breach cause: people.",
+ tasks:["Wi-Fi security: WPA2/WPA3, and testing only your own network with Aircrack-ng","Mobile app security basics with OWASP MASVS (storage, transport, platform misuse)","Social engineering: phishing, pretexting, and why people are the top target","Defending the human layer: awareness training and phishing simulations (Gophish, your own org)","Physical security awareness in concept (tailgating, lost devices)","Building a security-awareness program that actually changes behaviour"],
+ proj:"Run a Gophish phishing simulation against your own test accounts (with consent) OR design an awareness program, and write up the results and defences",res:["aircrack","owaspMasvs","gophish","sans"],skills:["Wi-Fi security","Mobile security","Social-engineering defence","Awareness"]},
+/* ===== Phase 13: Capstone, Certifications & National-Security Career (W23-24) ===== */
+{t:"Full-scope capstone engagement and reporting",h:12,goal:"Run a complete assessment end to end on an authorised lab, and deliver a professional report, the real deliverable of the job.",
+ tasks:["Plan the engagement: scope, rules of engagement and authorisation (even for your lab)","Execute the full chain: recon, enumeration, exploitation, privesc, lateral movement, on your lab","Switch hats: show how each step could be detected and prevented","Write a professional report: executive summary, findings, risk ratings, remediation","Map findings to a framework (NIST CSF / MITRE ATT&CK) for credibility","Present it as a portfolio write-up a hiring manager could read"],
+ proj:"A complete penetration-test report on a lab you own (ideally your AD lab), from scope to remediation, published as a polished portfolio piece",res:["nistir","mitre","nistcsf","hausec","pnpt"],skills:["Engagement methodology","Report writing","Risk rating","Framework mapping"]},
+{t:"Certifications, specialisation and a career in national security",h:11,goal:"Turn mastery into a career: pick your specialisation, plan your certifications, and aim at defending organisations and national infrastructure, legally.",
+ tasks:["Choose a specialisation: red team, blue team/SOC, DFIR, threat intel, cloud, OT or GRC","Certification roadmap: Security+, then eJPT/PNPT (offence) or GCIH/GCFA/blue-team paths, up to OSCP","Working in national security: government CERTs, defence, critical-infrastructure and public-sector roles, and the vetting/clearance reality","Keep sharp and keep it legal: CTFs, in-scope bug bounties, and home-lab research","Build your profile: write-ups, a lab blog, GitHub, LinkedIn and a focused resume","Your 12-month plan: cert, specialisation, applications, and continuous learning"],
+ proj:"Publish your capstone, write a dated 12-month plan (specialisation + certification + applications), and set up your public security profile",res:["securityplus","ejpt","pnpt","oscp","gcih","certin","ctftime","disclose"],skills:["Career planning","Certifications","Specialisation","National-security roles"]}
 ];
 
 export const LIB=[
- {h:"Legal practice labs",items:[["TryHackMe","https://tryhackme.com/","guided rooms, beginner to advanced"],["Hack The Box","https://www.hackthebox.com/","labs and Academy modules"],["PortSwigger Web Security Academy","https://portswigger.net/web-security","free, best web-security labs"],["OWASP Juice Shop","https://owasp.org/www-project-juice-shop/","vulnerable app you run yourself"],["VulnHub","https://www.vulnhub.com/","offline vulnerable VMs"],["picoCTF","https://picoctf.org/","beginner capture-the-flag"],["OverTheWire","https://overthewire.org/wargames/","Linux and security wargames"]]},
- {h:"References & tools",items:[["OWASP Top 10","https://owasp.org/www-project-top-ten/","the core web-risk list"],["MITRE ATT&CK","https://attack.mitre.org/","attacker techniques & detections"],["HackTricks","https://book.hacktricks.xyz/","community pentest wiki"],["GTFOBins","https://gtfobins.github.io/","Linux privesc reference"],["Nmap reference","https://nmap.org/book/man.html","the scanning standard"],["Kali Linux docs","https://www.kali.org/docs/","the tooling distro"],["CyberChef","https://gchq.github.io/CyberChef/","encode/decode/analyse data"]]},
- {h:"Learn & certify",items:[["TryHackMe paths","https://tryhackme.com/paths","structured role paths"],["HTB Academy","https://academy.hackthebox.com/","module-based learning"],["CompTIA Security+","https://www.comptia.org/certifications/security","foundational cert"],["INE eJPT","https://security.ine.com/certifications/ejpt-certification/","entry pentest cert"],["TCM Security PNPT","https://certifications.tcm-sec.com/pnpt/","practical pentest cert"],["OffSec OSCP","https://www.offsec.com/courses/pen-200/","the hands-on standard"],["disclose.io","https://disclose.io/","bug-bounty scope & safe harbour"]]}
+ {h:"Legal practice labs",items:[["TryHackMe","https://tryhackme.com/","guided rooms and full role paths"],["Hack The Box","https://www.hackthebox.com/","labs and Academy modules"],["PortSwigger Web Security Academy","https://portswigger.net/web-security","free, best web-security labs"],["CyberDefenders","https://cyberdefenders.org/","blue-team & DFIR labs"],["LetsDefend","https://letsdefend.io/","hands-on SOC practice"],["OWASP Juice Shop","https://owasp.org/www-project-juice-shop/","vulnerable app you run yourself"],["picoCTF","https://picoctf.org/","beginner capture-the-flag"]]},
+ {h:"References, frameworks & tools",items:[["MITRE ATT&CK","https://attack.mitre.org/","attacker techniques & detections"],["NIST Cybersecurity Framework","https://www.nist.gov/cyberframework","how organisations manage risk"],["CERT-In","https://www.cert-in.org.in/","India's national CERT"],["OWASP Top 10","https://owasp.org/www-project-top-ten/","core web-risk list"],["HackTricks","https://book.hacktricks.xyz/","community pentest wiki"],["CIS Benchmarks","https://www.cisecurity.org/cis-benchmarks","hardening standards"],["Sigma","https://github.com/SigmaHQ/sigma","portable detection rules"]]},
+ {h:"Learn & certify",items:[["TryHackMe paths","https://tryhackme.com/paths","structured role paths"],["HTB Academy","https://academy.hackthebox.com/","module-based learning"],["CompTIA Security+","https://www.comptia.org/certifications/security","foundational cert"],["INE eJPT","https://security.ine.com/certifications/ejpt-certification/","entry pentest cert"],["TCM Security PNPT","https://certifications.tcm-sec.com/pnpt/","practical pentest cert"],["GIAC (GCIH/GCFA/GSEC)","https://www.giac.org/","respected blue-team & DFIR certs"],["OffSec OSCP","https://www.offsec.com/courses/pen-200/","the hands-on offensive standard"]]}
 ];

@@ -6,13 +6,19 @@ import p4 from "./lessons/p4.js";
 import p5 from "./lessons/p5.js";
 import p6 from "./lessons/p6.js";
 import p7 from "./lessons/p7.js";
+import p8 from "./lessons/p8.js";
+import p9 from "./lessons/p9.js";
+import p10 from "./lessons/p10.js";
+import p11 from "./lessons/p11.js";
+import p12 from "./lessons/p12.js";
+import p13 from "./lessons/p13.js";
 
 const STEPS = [
-  { name: "Recon", desc: "Learn what the target reveals publicly (OSINT), on an authorised scope.", phase: "Phase 3", c: "#B38A00" },
-  { name: "Scanning", desc: "Map hosts, ports and services on a machine you own.", phase: "Phase 3", c: "#B38A00" },
-  { name: "Web & Exploitation", desc: "Find and understand flaws on labs built for learning.", phase: "Phase 4–5", c: "#0A8CB0" },
-  { name: "Privilege escalation", desc: "Turn a foothold into full control, on your own VMs.", phase: "Phase 5", c: "#5C9A12" },
-  { name: "Report & remediate", desc: "Write findings and the fix for every weakness.", phase: "Phase 7", c: "#7648E0" },
+  { name: "Attack", desc: "Recon, scanning, web, exploitation, privesc, Active Directory, on labs you own.", phase: "Phases 3–6", c: "#B38A00" },
+  { name: "Detect", desc: "SOC, SIEM, detection engineering and threat hunting.", phase: "Phase 7", c: "#0E9468" },
+  { name: "Investigate", desc: "DFIR, malware analysis and threat intelligence.", phase: "Phases 8–9", c: "#0A8CB0" },
+  { name: "Defend at scale", desc: "Network defense, cryptography, cloud and critical infrastructure.", phase: "Phases 9–11", c: "#2F68E0" },
+  { name: "Report & grow", desc: "Capstone, reporting, certifications and a national-security career.", phase: "Phase 13", c: "#C13584" },
 ];
 
 function CyberMap() {
@@ -39,8 +45,8 @@ function CyberMap() {
         ))}
       </div>
       <div className="foundation">
-        <b>And always the other side: Blue Team</b>
-        <span>Detect and respond to every attack you learn (Phase 6). Foundations: law &amp; ethics, a safe lab, networking &amp; Linux (Phases 1–2).</span>
+        <b>Offence and defence, every step</b>
+        <span>You learn to attack, then to detect and prevent each attack. Foundations: law &amp; ethics, a safe lab, networking &amp; Linux (Phases 1–2), building to a full capstone and a career.</span>
       </div>
     </div>
   );
@@ -79,6 +85,23 @@ const GLOSSARY = [
   ["Bug bounty", "A program that authorises testing of specified (in-scope) systems for rewards."],
   ["Safe harbour", "A promise not to take legal action against good-faith, in-scope researchers."],
   ["CTF", "Capture the Flag: a legal security puzzle competition for practice."],
+  ["Active Directory", "Microsoft's system for managing users and computers across an organisation. The backbone of most enterprise and government networks."],
+  ["Detection engineering", "Writing and tuning the rules that turn logs into alerts."],
+  ["Threat hunting", "Proactively searching for attackers that no alert has caught."],
+  ["DFIR", "Digital Forensics and Incident Response: investigating and recovering from breaches."],
+  ["Forensics", "Collecting and analysing digital evidence soundly enough to be trusted."],
+  ["Malware analysis", "Safely studying malicious software (in isolation) to detect and defend against it."],
+  ["IOC", "Indicator of Compromise: an artefact (like a hash or IP) that signals a possible breach."],
+  ["Threat intelligence", "Evidence-based knowledge about attackers, used to focus defences."],
+  ["TTPs", "Tactics, Techniques and Procedures: how an adversary operates (harder to change than IOCs)."],
+  ["Segmentation", "Dividing a network into zones so a breach in one can't reach the others."],
+  ["Cryptography", "The maths that keeps data secret (encryption) and tamper-evident (hashing, signatures)."],
+  ["PKI", "Public Key Infrastructure: certificates and authorities that let your browser trust a website."],
+  ["Cloud security", "Securing what you run on rented infrastructure; most breaches are misconfiguration."],
+  ["OT / ICS", "Operational Technology / Industrial Control Systems: the computers that run power, water and factories."],
+  ["Social engineering", "Tricking people (e.g. phishing) into granting access. The top cause of real breaches."],
+  ["CERT-In", "India's national computer emergency response team."],
+  ["NIST CSF", "A widely used framework for managing cybersecurity risk (Identify, Protect, Detect, Respond, Recover)."],
 ];
 
 export default {
@@ -87,29 +110,29 @@ export default {
   shortLabel: "Cyber Security",
   title: "Zero to Ethical Hacker",
   storageKey: "zero-to-ethical-hacker-v1",
-  lede: "A 12-week, 84-day path into ethical hacking and cyber security, taught the legal way. You build a safe lab on your own computer, then learn reconnaissance, networking, web hacking, exploitation, privilege escalation and, just as importantly, defence, all on machines you own or official training labs. Every attack is paired with its fix. The rule throughout: only ever test systems you own or have written permission to test.",
-  banner: "This path is strictly ethical and legal. You only ever practise on systems you own (your own lab VMs), on official training platforms (TryHackMe, Hack The Box, PortSwigger), or on in-scope bug-bounty targets. Accessing, scanning or attacking any other system without written permission is a crime, including under India's IT Act, 2000 and the US CFAA. This roadmap will not help you attack systems you are not authorised to test.",
+  lede: "A 24-week, 168-day masterclass that takes you from your first legal lab to defending organisations and national infrastructure. You learn the whole field, and feel the thrill of real ethical hacking at every step: foundations, networking and Linux, recon, web hacking, exploitation, Windows and Active Directory, then the defensive heart of the job, SOC and detection engineering, DFIR and malware analysis, threat intelligence and network defense, cryptography, cloud and critical-infrastructure (OT/ICS) security, the human layer, and a full capstone and career plan. Every attack is paired with its defence. The rule throughout: only ever test systems you own or have written permission to test.",
+  banner: "This path is strictly ethical and legal. You only ever practise on systems you own (your own lab VMs), on official training platforms (TryHackMe, Hack The Box, PortSwigger, CyberDefenders), or on in-scope bug-bounty targets, and malware only inside an isolated lab. Accessing, scanning or attacking any other system without written permission is a crime, including under India's IT Act, 2000 and the US CFAA. This roadmap builds defenders; it will not help anyone attack systems they are not authorised to test.",
   pace: [
-    ["Steady", "84 days", "about 1.5 hours a day, one lesson a day"],
-    ["Deep", "16 weeks", "add extra lab machines and CTFs to each week"],
+    ["Steady", "168 days", "about 1.5 hours a day, one lesson a day"],
+    ["Deep", "~32 weeks", "add extra lab machines, CTFs and a certification alongside"],
   ],
-  mapTitle: "How an ethical hacker works",
-  mapIntro: "A real assessment follows a lifecycle, always inside an authorised scope, and a professional learns the defence for every attack. You'll build each stage in order, then learn to detect it all.",
+  mapTitle: "The arc of the masterclass",
+  mapIntro: "You learn to attack like a professional, then to detect, investigate and prevent every attack, always inside an authorised scope, building toward a full capstone engagement and a career defending what matters.",
   Map: CyberMap,
   glossary: GLOSSARY,
-  bankHint: 'Every interview question from every lesson, with model answers. Filter by phase or search a topic like "IDOR", "privilege escalation" or "MITRE".',
-  doneMessage: "Keep practising legally: CTFs, your certification, and in-scope bug bounties. Stay in scope, always.",
+  bankHint: 'Every interview question from every lesson, with model answers. Filter by phase or search a topic like "IDOR", "Kerberoasting", "MITRE", "SIEM" or "OT/ICS".',
+  doneMessage: "Keep practising legally: CTFs, your certification, and in-scope bug bounties. Stay in scope, always, for your whole career.",
   rules: [
-    ["Authorisation first, always.", "Only ever test systems you own or have written permission to test. This is the whole job, and the law."],
-    ["Learn the fix, not just the flaw.", "For every attack, write the defence. A hacker who can also harden is worth far more."],
-    ["Build and break your own lab.", "Your VMs are unlimited legal targets. Snapshot, break, restore, repeat."],
+    ["Authorisation first, always.", "Only ever test systems you own or have written permission to test. This is the whole job, the law, and a national-security qualification."],
+    ["Learn the fix, not just the flaw.", "For every attack, write the detection and the prevention. A hacker who can also defend is worth far more."],
+    ["Build and break your own lab.", "Your VMs (and your own AD domain) are unlimited legal targets. Snapshot, break, restore, repeat."],
     ["Document everything.", "Reproducible notes become reports and prove you stayed in scope."],
-    ["Most jobs are defensive.", "Blue-team skills, logs, SIEM, incident response, are where the hiring is. Don't skip Phase 6."],
+    ["Most jobs, and most national-security work, are defensive.", "SOC, detection, DFIR, threat intel and OT defence are where the impact and hiring are. Don't skip the blue-team phases."],
     ["Stay in scope on real targets.", "On bug-bounty programs, test only in-scope assets under their rules. Out-of-scope is a crime."],
   ],
   PHASES,
   WEEKS,
   R,
   LIB,
-  LESSONS: { ...p1, ...p2, ...p3, ...p4, ...p5, ...p6, ...p7 },
+  LESSONS: { ...p1, ...p2, ...p3, ...p4, ...p5, ...p6, ...p7, ...p8, ...p9, ...p10, ...p11, ...p12, ...p13 },
 };
