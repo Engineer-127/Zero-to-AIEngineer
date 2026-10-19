@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { buildTrack, readPref, useProgress, writePref } from "./lib/track.js";
+import { go, parseHash } from "./lib/router.js";
 import { Phases, Tabs } from "./components/Roadmap.jsx";
-import LessonModal from "./components/LessonModal.jsx";
+import LessonPage from "./components/LessonPage.jsx";
 import { Bank, Glossary, Library, Rules, SectionHead, Summary } from "./components/Sections.jsx";
 
 // MERN comes first in the switch and is the default track.
@@ -9,24 +10,18 @@ import { Bank, Glossary, Library, Rules, SectionHead, Summary } from "./componen
 const TRACKS = [
   { id: "mern", label: "MERN Developer", sub: "91 days · beginner friendly", title: "Zero to MERN Developer", load: () => import("./tracks/mern/index.jsx") },
   { id: "ai", label: "AI Engineer", sub: "54 weeks · 338 days", title: "Zero to AI Engineer", load: () => import("./tracks/ai/index.jsx") },
-  { id: "cyber", label: "Cyber Security", sub: "84 days · ethical & legal", title: "Zero to Ethical Hacker", load: () => import("./tracks/cyber/index.jsx") },
+  { id: "cyber", label: "Cyber Security", sub: "24-week masterclass · 168 days", title: "Zero to Ethical Hacker", load: () => import("./tracks/cyber/index.jsx") },
 ];
 const BY_ID = Object.fromEntries(TRACKS.map((t) => [t.id, t]));
 const PREF_KEY = "zero-to-x-track";
 const loaded = {};
 
-/* Hash routes: #mern/day-5, #ai/day-42. Plain #day-N is the old AI link format. */
-function parseHash() {
-  const m = location.hash.match(/^#(?:(mern|ai|cyber)\/)?day-(\d+)$/);
-  if (!m) return null;
-  return { track: m[1] || "ai", day: +m[2] };
-}
-
 export default function App() {
   const [route, setRoute] = useState(() => {
     const h = parseHash();
+    if (h && BY_ID[h.track]) return h;
     const fromPref = readPref(PREF_KEY, "mern");
-    return { track: h?.track || (BY_ID[fromPref] ? fromPref : "mern"), day: h?.day || null };
+    return { track: BY_ID[fromPref] ? fromPref : "mern", day: null };
   });
   const meta = BY_ID[route.track];
   const [track, setTrack] = useState(() => loaded[route.track] || null);
@@ -48,27 +43,26 @@ export default function App() {
   useEffect(() => {
     const onHash = () => {
       const h = parseHash();
-      if (h) setRoute({ track: h.track, day: h.day });
+      if (h && BY_ID[h.track]) setRoute(h);
+      else setRoute((r) => ({ track: r.track, day: null }));
     };
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
-  function switchTrack(id) {
-    if (id === meta.id) return;
-    try { history.replaceState(null, "", location.pathname + location.search); } catch { /* ignore */ }
-    setRoute({ track: id, day: null });
-    window.scrollTo({ top: 0 });
-  }
+  // Scroll to top whenever the route changes (new page), the way a real page navigation behaves.
+  useEffect(() => { window.scrollTo({ top: 0 }); }, [route.track, route.day]);
 
   return (
     <>
       <div className="trackbar">
         <div className="trackbar-inner">
-          <div className="brand"><span className="brand-mark" aria-hidden="true">→</span>Zero to…</div>
+          <a className="brand" href="#" onClick={(e) => { e.preventDefault(); go(meta.id); }}>
+            <span className="brand-mark" aria-hidden="true">→</span>Zero to…
+          </a>
           <div className="switch" role="tablist" aria-label="Choose your path">
             {TRACKS.map((t) => (
-              <button key={t.id} role="tab" type="button" aria-selected={t.id === meta.id} onClick={() => switchTrack(t.id)}>
+              <button key={t.id} role="tab" type="button" aria-selected={t.id === meta.id} onClick={() => go(t.id)}>
                 <b>{t.label}</b>
                 <span>{t.sub}</span>
               </button>
@@ -77,7 +71,7 @@ export default function App() {
         </div>
       </div>
       {track?.id === meta.id ? (
-        <TrackView key={track.id} track={track} requestedDay={route.day} />
+        <TrackView key={track.id} track={track} day={route.day} />
       ) : (
         <div className="wrap"><p className="empty" role="status">
           {loadError ? <>Couldn't load this path. <button className="btn" type="button" onClick={() => location.reload()}>Reload</button></> : "Loading…"}
@@ -87,29 +81,23 @@ export default function App() {
   );
 }
 
-function TrackView({ track, requestedDay }) {
+function TrackView({ track, day }) {
   const progress = useProgress(track.storageKey);
+  const lessonId = day && track.allIds[day - 1] && track.LESSONS[track.allIds[day - 1]] ? track.allIds[day - 1] : null;
+
+  if (lessonId) {
+    return <LessonPage track={track} id={lessonId} progress={progress} />;
+  }
+  return <Roadmap track={track} progress={progress} />;
+}
+
+function Roadmap({ track, progress }) {
   const currentWeek = track.weeks.find((w) => !w.ids.every(progress.isDone)) || null;
   const [view, setView] = useState(() => (currentWeek ? currentWeek.p.n : "all"));
   const [openWeeks, setOpenWeeks] = useState(() => new Set(currentWeek ? [currentWeek.n] : []));
-  const [lessonId, setLessonId] = useState(null);
+  const [confirmReset, setConfirmReset] = useState(false);
 
-  const openLesson = useCallback((id) => {
-    if (!track.LESSONS[id]) return;
-    setLessonId(id);
-    try { history.replaceState(null, "", `#${track.id}/day-${track.day[id]}`); } catch { /* ignore */ }
-  }, [track]);
-
-  const closeLesson = useCallback(() => {
-    setLessonId(null);
-    try { history.replaceState(null, "", location.pathname + location.search); } catch { /* ignore */ }
-  }, []);
-
-  useEffect(() => {
-    const id = requestedDay && track.allIds[requestedDay - 1];
-    if (id) openLesson(id);
-  }, [requestedDay, track, openLesson]);
-
+  const openLesson = (id) => go(track.id, track.day[id]);
   const toggleWeek = (n) => setOpenWeeks((s) => { const x = new Set(s); x.has(n) ? x.delete(n) : x.add(n); return x; });
 
   function gotoWeek(w) {
@@ -121,7 +109,6 @@ function TrackView({ track, requestedDay }) {
     });
   }
 
-  const [confirmReset, setConfirmReset] = useState(false);
   const isMern = track.id === "mern";
   const TrackMap = track.Map;
 
@@ -157,7 +144,7 @@ function TrackView({ track, requestedDay }) {
 
       <section aria-labelledby="road-h" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
         <SectionHead id="road-h" title="The roadmap">
-          Open a week, work through the daily lessons, finish the project. Already know something? Use "Mark week done" to skip ahead.
+          Open a week, then open a day to read its full lesson on its own page. Already know something? Use "Mark week done" to skip ahead.
         </SectionHead>
         <Tabs track={track} view={view} setView={setView} progress={progress} />
         <Phases track={track} view={view} openWeeks={openWeeks} toggleWeek={toggleWeek} currentWeek={currentWeek} progress={progress} onLesson={openLesson} />
@@ -185,8 +172,6 @@ function TrackView({ track, requestedDay }) {
           )}
         </div>
       </footer>
-
-      {lessonId && <LessonModal track={track} id={lessonId} progress={progress} onOpen={openLesson} onClose={closeLesson} />}
     </div>
   );
 }

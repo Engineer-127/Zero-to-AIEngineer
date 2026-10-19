@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ResList } from "./Roadmap.jsx";
+import { go } from "../lib/router.js";
 
 function CodeBlock({ code }) {
   const [label, setLabel] = useState("Copy");
@@ -29,67 +30,45 @@ function Sec({ label, className = "", children }) {
   return <section className={`l-sec ${className}`}><h3>{label}</h3>{children}</section>;
 }
 
-export default function LessonModal({ track, id, progress, onOpen, onClose }) {
-  const panelRef = useRef(null);
-  const overlayRef = useRef(null);
-  const nextRef = useRef(null);
-  const [justDone, setJustDone] = useState(false);
-
+/* A lesson is a full page reached by its own route (#track/day-N), not a dialog. */
+export default function LessonPage({ track, id, progress }) {
   const les = track.LESSONS[id];
   const w = track.weekOf(id);
   const n = track.day[id];
   const isProj = id.endsWith("-p");
   const done = progress.isDone(id);
-  const prev = track.allIds[n - 2];
-  const next = track.allIds[n];
+  const prevId = track.allIds[n - 2];
+  const nextId = track.allIds[n];
+  const prevDay = prevId ? n - 1 : null;
+  const nextDay = nextId ? n + 1 : null;
 
-  useEffect(() => {
-    document.body.classList.add("modal-open");
-    return () => document.body.classList.remove("modal-open");
-  }, []);
+  const toRoadmap = () => go(track.id);
+  const gotoDay = (d) => go(track.id, d);
 
-  useEffect(() => {
-    setJustDone(false);
-    if (overlayRef.current) overlayRef.current.scrollTop = 0;
-    panelRef.current?.querySelector("#l-close")?.focus({ preventScroll: true });
-  }, [id]);
-
-  useEffect(() => {
-    if (justDone) nextRef.current?.focus();
-  }, [justDone]);
-
+  // Left/right arrows move between days, the way a reader expects on a routed page.
   useEffect(() => {
     function onKey(e) {
-      if (e.key === "Escape") return onClose();
-      if (e.target.closest?.("input,textarea,select")) return;
-      if (e.key === "ArrowRight" && next) onOpen(next);
-      if (e.key === "ArrowLeft" && prev) onOpen(prev);
-      if (e.key === "Tab") {
-        const f = [...panelRef.current.querySelectorAll("button:not([disabled]), a, summary")];
-        if (!f.length) return;
-        if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
-        else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
-      }
+      if (e.target.closest?.("input,textarea,select,button,a,summary")) return;
+      if (e.key === "ArrowRight" && nextDay) gotoDay(nextDay);
+      if (e.key === "ArrowLeft" && prevDay) gotoDay(prevDay);
     }
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [next, prev, onOpen, onClose]);
-
-  function toggleDone() {
-    const val = !done;
-    progress.setDone(id, val);
-    setJustDone(val && !!next);
-  }
+  }, [prevDay, nextDay]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className="lesson-overlay" ref={overlayRef} onClick={(e) => e.target === overlayRef.current && onClose()}>
-      <div className="lesson-panel" ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="l-title">
-        <header className="l-head" style={{ "--pc": w.p.c }}>
+    <div className="wrap lesson-wrap">
+      <nav className="lesson-nav" aria-label="Lesson navigation">
+        <a href={`#${track.id}`} className="back-link" onClick={(e) => { e.preventDefault(); toRoadmap(); }}>← All {track.PHASES.length} phases</a>
+        <span className="lesson-crumb">{track.title}</span>
+      </nav>
+
+      <article className="lesson-page" style={{ "--pc": w.p.c }}>
+        <header className="l-head">
           <div className="l-top">
             <span className="l-eyebrow">Day {n} of {track.total} · Week {w.n} · Phase {w.p.n}: {w.p.name}</span>
-            <button className="l-close" type="button" id="l-close" onClick={onClose} aria-label="Close lesson">Close</button>
           </div>
-          <h2 id="l-title">{isProj && <span className="tag">Build day</span>}{track.titleOf(id)}</h2>
+          <h1 className="l-title">{isProj && <span className="tag">Build day</span>}{track.titleOf(id)}</h1>
           <div className="l-meta">
             {les.min && <span className="chip">~{les.min} min</span>}
             <span className="chip">{w.t}</span>
@@ -118,15 +97,19 @@ export default function LessonModal({ track, id, progress, onOpen, onClose }) {
           <Sec label="Learn from"><ResList track={track} keys={w.res} /></Sec>
         </div>
         <footer className="l-foot">
-          <button className="btn" type="button" disabled={!prev} onClick={() => prev && onOpen(prev)}>← Day {prev ? n - 1 : ""}</button>
-          <button className={`btn${done ? "" : " primary"}`} type="button" id="l-done" onClick={toggleDone}>
+          <button className="btn" type="button" disabled={!prevDay} onClick={() => prevDay && gotoDay(prevDay)}>← Day {prevDay || ""}</button>
+          <button className={`btn${done ? "" : " primary"}`} type="button" onClick={() => progress.setDone(id, !done)}>
             {done ? "Mark as not done" : `Mark day ${n} complete`}
           </button>
-          <button ref={nextRef} className={`btn${justDone ? " primary" : ""}`} type="button" disabled={!next} onClick={() => next && onOpen(next)}>
-            Day {next ? n + 1 : ""} →
+          <button className={`btn${done && nextDay ? " primary" : ""}`} type="button" disabled={!nextDay} onClick={() => nextDay && gotoDay(nextDay)}>
+            Day {nextDay || ""} →
           </button>
         </footer>
-      </div>
+      </article>
+
+      <p className="lesson-foot-link">
+        <a href={`#${track.id}`} onClick={(e) => { e.preventDefault(); toRoadmap(); }}>← Back to the roadmap</a>
+      </p>
     </div>
   );
 }
