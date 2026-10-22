@@ -1,30 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { ResList } from "./Roadmap.jsx";
+import { CodeBlock } from "./CodeBlock.jsx";
+import { LessonDrills } from "./Drills.jsx";
 import { go } from "../lib/router.js";
-
-function CodeBlock({ code }) {
-  const [label, setLabel] = useState("Copy");
-  const ref = useRef(null);
-  function copy() {
-    const ok = () => { setLabel("Copied"); setTimeout(() => setLabel("Copy"), 1500); };
-    (navigator.clipboard ? navigator.clipboard.writeText(code) : Promise.reject())
-      .then(ok)
-      .catch(() => {
-        const r = document.createRange();
-        r.selectNodeContents(ref.current);
-        const s = getSelection();
-        s.removeAllRanges();
-        s.addRange(r);
-        setLabel("Press Ctrl/Cmd+C");
-      });
-  }
-  return (
-    <div className="code-wrap">
-      <button className="btn copy" type="button" onClick={copy}>{label}</button>
-      <pre><code ref={ref}>{code}</code></pre>
-    </div>
-  );
-}
 
 function Sec({ label, className = "", children }) {
   return <section className={`l-sec ${className}`}><h3>{label}</h3>{children}</section>;
@@ -84,6 +62,11 @@ export default function LessonPage({ track, id, progress }) {
             <ol className="l-steps">{les.t.map((x, i) => <li key={i}>{x}</li>)}</ol>
           </Sec>
           {les.c && <Sec label="Starter code"><CodeBlock code={les.c} /></Sec>}
+          {les.p?.length > 0 && (
+            <Sec label={<>Syntax drills <small>try each one yourself first, then compare with the solutions</small></>} className="l-qa">
+              <LessonDrills drills={les.p} color={w.p.c} />
+            </Sec>
+          )}
           <Sec label={<>Interview questions <small>tap to see a model answer</small></>} className="l-qa">
             {les.q.map((q, i) => (
               <details className="qa" key={`${id}-${i}`} style={{ "--pc": w.p.c }}>

@@ -19,7 +19,8 @@ export function buildTrack(def) {
     return id.endsWith("-p") ? w.proj : w.tasks[+id.split("-")[1] - 1];
   };
   const questionCount = allIds.reduce((n, id) => n + (def.LESSONS[id]?.q?.length || 0), 0);
-  return { ...def, weeks, allIds, day, total: allIds.length, weekOf, titleOf, questionCount };
+  const drillCount = allIds.reduce((n, id) => n + (def.LESSONS[id]?.p?.length || 0), 0);
+  return { ...def, weeks, allIds, day, total: allIds.length, weekOf, titleOf, questionCount, drillCount };
 }
 
 /* Progress for one track, persisted in localStorage under the track's own key. */

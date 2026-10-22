@@ -3,6 +3,7 @@ import { buildTrack, readPref, useProgress, writePref } from "./lib/track.js";
 import { go, parseHash } from "./lib/router.js";
 import { Phases, Tabs } from "./components/Roadmap.jsx";
 import LessonPage from "./components/LessonPage.jsx";
+import { DrillBank } from "./components/Drills.jsx";
 import { Bank, Glossary, Library, Rules, SectionHead, Summary } from "./components/Sections.jsx";
 
 // MERN comes first in the switch and is the default track.
@@ -116,7 +117,7 @@ function Roadmap({ track, progress }) {
     <div className="wrap">
       <header>
         <div className="eyebrow">
-          {track.total} daily lessons · {track.questionCount} interview questions · {isMern ? "about 90 days" : `${track.weeks.length} weeks`} · {track.PHASES.length} phases
+          {track.total} daily lessons · {track.questionCount} interview questions ·{track.drillCount > 0 && ` ${track.drillCount} coding drills ·`} {isMern ? "about 90 days" : `${track.weeks.length} weeks`} · {track.PHASES.length} phases
           {isMern && " · no coding background needed"}
         </div>
         <h1>{track.title} <span className="arrow">→</span></h1>
@@ -151,6 +152,8 @@ function Roadmap({ track, progress }) {
       </section>
 
       {track.glossary && <Glossary items={track.glossary} />}
+
+      <DrillBank track={track} onLesson={openLesson} />
 
       <Bank track={track} onLesson={openLesson} />
 
