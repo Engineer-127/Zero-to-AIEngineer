@@ -10,6 +10,16 @@ import p8 from "./lessons/p8.js";
 import p9 from "./lessons/p9.js";
 import p10 from "./lessons/p10.js";
 import p11 from "./lessons/p11.js";
+import d1 from "./drills/w1.js";
+import d2 from "./drills/w2.js";
+import d3 from "./drills/w3.js";
+import d4 from "./drills/w4.js";
+import d5 from "./drills/w5.js";
+
+/* Syntax drills ride along on their lesson as .p (problem + several worked solutions). */
+const DRILLS = { ...d1, ...d2, ...d3, ...d4, ...d5 };
+const LESSONS = { ...p1, ...p2, ...p3, ...p4, ...p5, ...p6, ...p7, ...p8, ...p9, ...p10, ...p11 };
+for (const [id, p] of Object.entries(DRILLS)) LESSONS[id] = { ...LESSONS[id], p };
 
 function AiMap() {
   return (
@@ -48,6 +58,8 @@ export default {
   mapTitle: "How it all fits together",
   mapIntro: "Each field sits inside a bigger one. Vision and language are application areas that use every layer. Learn from the outside in.",
   Map: AiMap,
+  drillTitle: "Python syntax drills",
+  drillHint: "Every coding problem from Phase 1, each with one or more worked solutions. Type the answer yourself first, then compare. Repeat until the syntax is automatic, so real-world code reads like plain English.",
   bankHint: 'Every interview question from every lesson, with model answers. Filter by phase or search a topic like "RAG" or "overfitting".',
   doneMessage: "Keep building, and read new papers each week on Hugging Face.",
   rules: [
@@ -62,5 +74,5 @@ export default {
   WEEKS,
   R,
   LIB,
-  LESSONS: { ...p1, ...p2, ...p3, ...p4, ...p5, ...p6, ...p7, ...p8, ...p9, ...p10, ...p11 },
+  LESSONS,
 };
